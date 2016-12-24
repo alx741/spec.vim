@@ -1,14 +1,5 @@
-if !exists("g:spec_global_dirs")
-    let g:spec_global_dirs = ['test', '../test']
-endif
-
-if !exists("g:spec_global_prefix")
-    let g:spec_global_prefix = ""
-endif
-
-if !exists("g:spec_global_suffix")
-    let g:spec_global_suffix = "Spec"
-endif
+" Load FileType defaults
+call spec#defaults#load()
 
 " function! spec#Open()
 "     let l:sourceFile = expand("%:t:r")
