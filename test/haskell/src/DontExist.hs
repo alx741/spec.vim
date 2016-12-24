@@ -1,3 +1,3 @@
-module DontExists where
+module DontExist where
 
 someFunction = undefined

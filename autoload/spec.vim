@@ -1,19 +1,14 @@
 " Load FileType defaults
 call spec#defaults#load()
 
-" function! spec#Open()
-"     let l:specFile = SpecName()
-
-"     for dir in g:spec_global_dirs
-"         let l:spec_file = findfile(l:spec_filename, dir . "/**/")
-"         if l:spec_file !=? ""
-"             exe ":e " . l:spec_file
-"             return
-"         endif
-"     endfor
-
-"     echom "Test file \"" . l:spec_filename . "\" does not exist!"
-" endfunction
+function! spec#Open()
+    let l:specFile = SpecName()
+    if SpecFileExists(l:specFile)
+        exe ":e " . l:specFile
+    else
+        echom "Spec file \"" . l:specFile . "\" does not exist!"
+    endif
+endfunction
 
 function! SpecFileExists(specName)
     let l:dirs = g:spec_global_dirs
