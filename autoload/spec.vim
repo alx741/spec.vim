@@ -2,8 +2,7 @@
 call spec#defaults#load()
 
 " function! spec#Open()
-"     let l:sourceFile = expand("%:t:r")
-"     let l:spec_filename = g:spec_global_prefix . l:sourceFile . g:spec_global_suffix . ".hs"
+"     let l:specFile = SpecName()
 
 "     for dir in g:spec_global_dirs
 "         let l:spec_file = findfile(l:spec_filename, dir . "/**/")
@@ -15,6 +14,26 @@ call spec#defaults#load()
 
 "     echom "Test file \"" . l:spec_filename . "\" does not exist!"
 " endfunction
+
+function! SpecFileExists(specName)
+    let l:dirs = g:spec_global_dirs
+
+    if &ft ==? "haskell"
+        if exists("g:spec_haskell_dirs")
+            let l:dirs = g:spec_haskell_dirs
+        endif
+
+    elseif &ft ==? "ruby"
+        if exists("g:spec_ruby_dirs")
+            let l:dirs = g:spec_ruby_dirs
+        endif
+    endif
+
+    for dir in l:dirs
+        let l:spec = findfile(a:specName, dir . "/**/")
+        return (l:spec !=? "")
+    endfor
+endfunction
 
 function! SpecName()
     let l:prefix_suffix = PrefixAndSuffix()
