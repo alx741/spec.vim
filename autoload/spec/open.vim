@@ -13,6 +13,11 @@ function! spec#open#SpecFileExists(specName)
         if exists("g:spec_ruby_dirs")
             let l:dirs = g:spec_ruby_dirs
         endif
+
+    elseif &ft ==? "php"
+        if exists("g:spec_php_dirs")
+            let l:dirs = g:spec_php_dirs
+        endif
     endif
 
     for dir in l:dirs
@@ -46,6 +51,14 @@ function! PrefixAndSuffix()
         endif
         if exists("g:spec_ruby_suffix")
             let l:suffix = g:spec_ruby_suffix
+        endif
+
+    elseif &ft ==? "php"
+        if exists("g:spec_php_prefix")
+            let l:prefix = g:spec_php_prefix
+        endif
+        if exists("g:spec_php_suffix")
+            let l:suffix = g:spec_php_suffix
         endif
     endif
 

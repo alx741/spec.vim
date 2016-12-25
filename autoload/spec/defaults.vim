@@ -3,7 +3,7 @@ function! spec#defaults#load()
     "     Global Defaults
     " =======================
     if !exists("g:spec_global_dirs")
-        let g:spec_global_dirs = ['test', '../test']
+        let g:spec_global_dirs = ['test', '../test', 'spec', '../spec']
     endif
 
     if !exists("g:spec_global_prefix")
@@ -44,5 +44,21 @@ function! spec#defaults#load()
 
     if !exists("g:spec_ruby_suffix")
         let g:spec_ruby_suffix = "_spec"
+    endif
+
+
+    " =======================
+    "       PHP
+    " =======================
+    if !exists("g:spec_php_dirs")
+        let g:spec_php_dirs = ['spec', '../spec']
+    endif
+
+    if !exists("g:spec_php_prefix")
+        let g:spec_php_prefix = ""
+    endif
+
+    if !exists("g:spec_php_suffix")
+        let g:spec_php_suffix = "Spec"
     endif
 endfunction
