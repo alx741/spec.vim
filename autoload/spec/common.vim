@@ -1,0 +1,35 @@
+" Load FileType defaults
+call spec#defaults#load()
+
+function! spec#common#GetConfig()
+    if &ft ==? "haskell"
+        if exists("g:spec_haskell")
+            return g:spec_haskell
+        endif
+
+    elseif &ft ==? "ruby"
+        if exists("g:spec_ruby")
+            return g:spec_ruby
+        endif
+
+    elseif &ft ==? "php"
+        if exists("g:spec_php")
+            return g:spec_php
+        endif
+    endif
+
+    return g:spec_global
+endfunction
+
+function! spec#common#SpecName()
+    let l:config = spec#common#GetConfig()
+    return l:config['prefix'] . s:FileName() . l:config['suffix'] . s:Extension()
+endfunction
+
+function! s:FileName()
+    return expand("%:t:r")
+endfunction
+
+function! s:Extension()
+    return "." . expand("%:e")
+endfunction
