@@ -2,21 +2,21 @@
 call spec#defaults#load()
 
 function! spec#open#SpecFile(specName)
-    let l:dir = g:spec_global_dir
+    let l:dir = g:spec_global['spec_dir']
 
     if &ft ==? "haskell"
-        if exists("g:spec_haskell_dir")
-            let l:dir = g:spec_haskell_dir
+        if exists("g:spec_haskell")
+            let l:dir = g:spec_haskell['spec_dir']
         endif
 
     elseif &ft ==? "ruby"
-        if exists("g:spec_ruby_dir")
-            let l:dir = g:spec_ruby_dir
+        if exists("g:spec_ruby")
+            let l:dir = g:spec_ruby['spec_dir']
         endif
 
     elseif &ft ==? "php"
-        if exists("g:spec_php_dir")
-            let l:dir = g:spec_php_dir
+        if exists("g:spec_php")
+            let l:dir = g:spec_php['spec_dir']
         endif
     endif
 
@@ -39,31 +39,31 @@ function! spec#open#SpecName()
 endfunction
 
 function! PrefixAndSuffix()
-    let l:prefix = g:spec_global_prefix
-    let l:suffix = g:spec_global_suffix
+    let l:prefix = g:spec_global['prefix']
+    let l:suffix = g:spec_global['suffix']
 
     if &ft ==? "haskell"
-        if exists("g:spec_haskell_prefix")
-            let l:prefix = g:spec_haskell_prefix
+        if exists("g:spec_haskell")
+            let l:prefix = g:spec_haskell['prefix']
         endif
-        if exists("g:spec_haskell_suffix")
-            let l:suffix = g:spec_haskell_suffix
+        if exists("g:spec_haskell")
+            let l:suffix = g:spec_haskell['suffix']
         endif
 
     elseif &ft ==? "ruby"
-        if exists("g:spec_ruby_prefix")
-            let l:prefix = g:spec_ruby_prefix
+        if exists("g:spec_ruby")
+            let l:prefix = g:spec_ruby['prefix']
         endif
-        if exists("g:spec_ruby_suffix")
-            let l:suffix = g:spec_ruby_suffix
+        if exists("g:spec_ruby")
+            let l:suffix = g:spec_ruby['suffix']
         endif
 
     elseif &ft ==? "php"
-        if exists("g:spec_php_prefix")
-            let l:prefix = g:spec_php_prefix
+        if exists("g:spec_php")
+            let l:prefix = g:spec_php['prefix']
         endif
-        if exists("g:spec_php_suffix")
-            let l:suffix = g:spec_php_suffix
+        if exists("g:spec_php")
+            let l:suffix = g:spec_php['suffix']
         endif
     endif
 

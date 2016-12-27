@@ -2,63 +2,51 @@ function! spec#defaults#load()
     " =======================
     "     Global Defaults
     " =======================
-    if !exists("g:spec_global_dir")
-        let g:spec_global_dir = "test"
-    endif
-
-    if !exists("g:spec_global_prefix")
-        let g:spec_global_prefix = ""
-    endif
-
-    if !exists("g:spec_global_suffix")
-        let g:spec_global_suffix = "Spec"
+    if !exists("g:spec_global")
+        let g:spec_global = {
+            \   'spec_dir': 'test',
+            \   'src_dir': 'src',
+            \   'prefix': '',
+            \   'suffix': 'Spec'
+            \ }
     endif
 
 
     " =======================
     "       Haskell
     " =======================
-    if !exists("g:spec_haskell_dir")
-        let g:spec_haskell_dir = "test"
-    endif
-
-    if !exists("g:spec_haskell_prefix")
-        let g:spec_haskell_prefix = ""
-    endif
-
-    if !exists("g:spec_haskell_suffix")
-        let g:spec_haskell_suffix = "Spec"
+    if !exists("g:spec_haskell")
+        let g:spec_haskell = {
+            \   'spec_dir': 'test',
+            \   'src_dir': 'src',
+            \   'prefix': '',
+            \   'suffix': 'Spec'
+            \ }
     endif
 
 
     " =======================
     "       Ruby
     " =======================
-    if !exists("g:spec_ruby_dir")
-        let g:spec_ruby_dir = "spec"
-    endif
-
-    if !exists("g:spec_ruby_prefix")
-        let g:spec_ruby_prefix = ""
-    endif
-
-    if !exists("g:spec_ruby_suffix")
-        let g:spec_ruby_suffix = "_spec"
+    if !exists("g:spec_ruby")
+        let g:spec_ruby = {
+            \   'spec_dir': 'spec',
+            \   'src_dir': 'src',
+            \   'prefix': '',
+            \   'suffix': '_spec'
+            \ }
     endif
 
 
     " =======================
     "       PHP
     " =======================
-    if !exists("g:spec_php_dir")
-        let g:spec_php_dir = "spec"
-    endif
-
-    if !exists("g:spec_php_prefix")
-        let g:spec_php_prefix = ""
-    endif
-
-    if !exists("g:spec_php_suffix")
-        let g:spec_php_suffix = "Spec"
+    if !exists("g:spec_php")
+        let g:spec_php = {
+            \   'spec_dir': 'spec',
+            \   'src_dir': 'src',
+            \   'prefix': '',
+            \   'suffix': 'Spec'
+            \ }
     endif
 endfunction
