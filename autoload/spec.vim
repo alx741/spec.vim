@@ -1,8 +1,9 @@
 function! spec#Open()
-    let l:specFile = spec#open#SpecName()
-    if spec#open#SpecFileExists(l:specFile)
+    let l:specName = spec#open#SpecName()
+    let l:specFile = spec#open#SpecFile(l:specName)
+    if l:specFile !=? ""
         exe ":e " . l:specFile
     else
-        echom "Spec file \"" . l:specFile . "\" does not exist!"
+        echom "Spec file \"" . l:specName . "\" does not exist!"
     endif
 endfunction

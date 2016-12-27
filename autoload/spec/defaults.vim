@@ -2,8 +2,8 @@ function! spec#defaults#load()
     " =======================
     "     Global Defaults
     " =======================
-    if !exists("g:spec_global_dirs")
-        let g:spec_global_dirs = ['test', '../test', 'spec', '../spec']
+    if !exists("g:spec_global_dir")
+        let g:spec_global_dir = "test"
     endif
 
     if !exists("g:spec_global_prefix")
@@ -18,8 +18,8 @@ function! spec#defaults#load()
     " =======================
     "       Haskell
     " =======================
-    if !exists("g:spec_haskell_dirs")
-        let g:spec_haskell_dirs = ['test', '../test']
+    if !exists("g:spec_haskell_dir")
+        let g:spec_haskell_dir = "test"
     endif
 
     if !exists("g:spec_haskell_prefix")
@@ -34,8 +34,8 @@ function! spec#defaults#load()
     " =======================
     "       Ruby
     " =======================
-    if !exists("g:spec_ruby_dirs")
-        let g:spec_ruby_dirs = ['spec', '../spec']
+    if !exists("g:spec_ruby_dir")
+        let g:spec_ruby_dir = "spec"
     endif
 
     if !exists("g:spec_ruby_prefix")
@@ -50,8 +50,8 @@ function! spec#defaults#load()
     " =======================
     "       PHP
     " =======================
-    if !exists("g:spec_php_dirs")
-        let g:spec_php_dirs = ['spec', '../spec']
+    if !exists("g:spec_php_dir")
+        let g:spec_php_dir = "spec"
     endif
 
     if !exists("g:spec_php_prefix")

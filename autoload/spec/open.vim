@@ -1,29 +1,34 @@
 " Load FileType defaults
 call spec#defaults#load()
 
-function! spec#open#SpecFileExists(specName)
-    let l:dirs = g:spec_global_dirs
+function! spec#open#SpecFile(specName)
+    let l:dir = g:spec_global_dir
 
     if &ft ==? "haskell"
-        if exists("g:spec_haskell_dirs")
-            let l:dirs = g:spec_haskell_dirs
+        if exists("g:spec_haskell_dir")
+            let l:dir = g:spec_haskell_dir
         endif
 
     elseif &ft ==? "ruby"
-        if exists("g:spec_ruby_dirs")
-            let l:dirs = g:spec_ruby_dirs
+        if exists("g:spec_ruby_dir")
+            let l:dir = g:spec_ruby_dir
         endif
 
     elseif &ft ==? "php"
-        if exists("g:spec_php_dirs")
-            let l:dirs = g:spec_php_dirs
+        if exists("g:spec_php_dir")
+            let l:dir = g:spec_php_dir
         endif
     endif
 
-    for dir in l:dirs
-        let l:spec = findfile(a:specName, dir . "/**/")
-        return (l:spec !=? "")
-    endfor
+    " Find specs dir recursively upwards
+    let l:dirAbsPath = finddir(l:dir, "./;/")
+    if l:dirAbsPath !=? ""
+        " Find spec file recursively downwards
+        return findfile(a:specName, l:dirAbsPath . "/**/")
+    else
+        echoerr "Specs directory: \"" . l:dir  . "\" does not exist!"
+        return ""
+    endif
 endfunction
 
 function! spec#open#SpecName()
