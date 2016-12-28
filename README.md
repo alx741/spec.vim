@@ -11,9 +11,9 @@ creating spec files for the spec files.
 
 ## Currently supported languages
 
-* Haskell
-* PHP
-* Ruby
+* Haskell [(Hspec)](https://hspec.github.io/)
+* PHP [(PHPspec)](http://www.phpspec.net/en/stable/)
+* Ruby [(Rspec)](http://rspec.info/)
 
 
 ## Installation
