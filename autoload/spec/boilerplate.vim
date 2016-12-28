@@ -3,14 +3,18 @@ if !exists("g:spec_boilerplate_dir")
 endif
 
 function! spec#boilerplate#Read()
-    exe "read " . g:spec_boilerplate_dir . "/" . &ft . "*"
-    exe "norm! ggJ"
-    exe "redraw!"
+    let l:boilerplateFile = g:spec_boilerplate_dir . "/" . &ft . Extension()
+    let l:boilerplate = readfile(l:boilerplateFile)
+
+    exe "norm! gg"
+    for l:line in l:boilerplate
+        exe "norm! i" . l:line . "\<CR>"
+    endfor
+    exe "norm! ddgg"
 endfunction
 
 function! spec#boilerplate#Placeholders(srcName, specName)
     exe "%s/\%srcName\%/" . a:srcName . "/ge"
     exe "%s/\%specName\%/" . a:specName . "/ge"
     exe "norm! gg0"
-    exe "redraw!"
 endfunction

@@ -24,7 +24,7 @@ function! spec#Create()
         return
     endif
 
-    let l:srcName = expand('%:t:r')
+    let l:srcName = FileName()
     let l:specName = spec#common#SpecName()
     if spec#open#SpecFileExists()
         echom "Spec file \"" . l:specName . "\" already exists!"
