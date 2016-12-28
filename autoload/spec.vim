@@ -19,16 +19,15 @@ function! spec#Create()
         return
     endif
 
+    let l:srcName = expand('%:t:r')
     let l:specName = spec#common#SpecName()
-
     if spec#open#SpecFileExists()
         echom "Spec file \"" . l:specName . "\" already exists!"
         return
     endif
 
     call spec#create#TouchSpec(l:specName)
-
-    let l:specFile = spec#open#SpecFile(l:specName)
-    exe ":edit " . l:specFile
+    exe ":edit " . spec#open#SpecFile(l:specName)
     call spec#boilerplate#Read()
+    call spec#boilerplate#Placeholders(srcName, specName)
 endfunction

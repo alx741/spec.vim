@@ -5,10 +5,11 @@ endif
 function! spec#boilerplate#Read()
     exe "read " . g:spec_boilerplate_dir . "/" . &ft . "*"
     exe "norm ggJ"
-    call s:ReplacePlaceholders()
     exe "redraw!"
 endfunction
 
-function! s:ReplacePlaceholders()
-    exe "%s/\%specName\%/" . expand("%:t:r")
+function! spec#boilerplate#Placeholders(srcName, specName)
+    exe "%s/\%srcName\%/" . a:srcName
+    exe "%s/\%specName\%/" . a:specName
+    exe "redraw!"
 endfunction
