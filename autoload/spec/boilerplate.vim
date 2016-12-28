@@ -2,6 +2,12 @@ if !exists("g:spec_boilerplate_dir")
     let g:spec_boilerplate_dir = resolve(expand('<sfile>:p:h')) . "/../../boilerplate"
 endif
 
+function! spec#boilerplate#Edit()
+    let l:config = spec#common#GetConfig()
+    let l:boilerplateFile = g:spec_boilerplate_dir . "/" . &ft . l:config['src_extension']
+    exe ":split " . l:boilerplateFile
+endfunction
+
 function! spec#boilerplate#Read()
     let l:config = spec#common#GetConfig()
     let l:boilerplateFile = g:spec_boilerplate_dir . "/" . &ft . l:config['src_extension']

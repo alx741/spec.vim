@@ -4,6 +4,7 @@ command! SpecVOpen call spec#Open('vertical')
 command! SpecCreate call spec#Create('current')
 command! SpecHCreate call spec#Create('horizontal')
 command! SpecVCreate call spec#Create('vertical')
+command! SpecBoilerplateEdit call spec#boilerplate#Edit()
 
 if !exists("g:spec_disable_maps")
     let g:spec_disable_maps = 0
@@ -18,5 +19,6 @@ if exists("g:spec_disable_maps") && g:spec_disable_maps == 0
         au FileType haskell,ruby,php nnoremap ghS :SpecCreate<CR>
         au FileType haskell,ruby,php nnoremap ghhS :SpecHCreate<CR>
         au FileType haskell,ruby,php nnoremap ghvS :SpecVCreate<CR>
+        au FileType haskell,ruby,php nnoremap ghE :SpecBoilerplateEdit<CR>
     augroup END
 endif
