@@ -27,7 +27,7 @@ Compatible with `Vundle`, `Pathogen`, `Vim-plug`.
 
 Map | Command | Action
 --- | ------- | ------
-**ghs** | :SpecOpen | Jump the spec file for the current source file
+**ghs** | :SpecOpen | Toggle between source file and corresponding spec file
 **ghS** | :SpecCreate | Create a spec file for the current source file
 
 ### Boilerplate
