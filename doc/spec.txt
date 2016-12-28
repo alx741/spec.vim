@@ -1,5 +1,5 @@
 *spec.txt*       BDD (Behavior Driven Develpment) helper plugin
-*Spec* *spec*
+*Spec* *spec* *Spec.vim* *spec.vim* *specvim*
 ==============================================================================
 CONTENTS                                                       *spec-contents*
 
@@ -8,7 +8,8 @@ CONTENTS                                                       *spec-contents*
     3. Usage........................................|spec-usage|
     3. Boilerplate..................................|spec-boilerplate|
     4. Default Mappings.............................|spec-mappings|
-    5. Credits......................................|spec-credits|
+    5. Configuration................................|spec-config|
+    6. Credits......................................|spec-credits|
 
 ==============================================================================
 INTRO                                                             *spec-intro*
@@ -77,7 +78,7 @@ BOILERPLATE                                                 *spec-boilerplate*
 
 When a new spec file is created with |:SpecCreate|, some per-language
 boilerplate will be added by default, you can customize it by editing the
-language corresponding file in the |g:spec_boilerplate_dir| directory.
+language corresponding file in the |spec_boilerplate_dir| directory.
 
 Boilerplate files have the name of the target language and the language
 extension.
@@ -92,6 +93,63 @@ when spec files are created. Available placeholders are:
 
                                                *specName* *%specName%*
   *%specName%*      The name of the spec file (without the extension)
+
+
+==============================================================================
+CONFIGURATION                                                    *spec-config*
+
+
+                                                *spec_disable_maps*
+g:spec_disable_maps
+                        Disables the default |spec-mappings|.
+                        Defaults to 0.
+
+                                                *spec_boilerplate_dir*
+g:spec_boilerplate_dir
+                        Defines the location of the |spec-boilerplate|
+                        directory.
+                        Defaults to plugin installation path.
+
+                                                *spec_boilerplate_disable*
+g:spec_boilerplate_disable
+                        Disables the use of |spec-boilerplate| when creating new
+                        spec files.
+                        Defaults to 0.
+
+
+Per-language configuration
+--------------------------
+
+You can configure the directories where your spec test files and normal source
+files are kept as well as the prefix and suffix the spec files should have, so
+for instance: a Ruby `src/module.rb` source file will have a corresponding
+`spec/module_spec.rb` spec file, but a Haskell `src/Module.hs` will have a
+`test/ModuleSpec.hs` spec file.
+
+To change the default settings of a language use:
+
+  let g:spec_language = {
+      \   'spec_dir': 'test',
+      \   'src_dir': 'src',
+      \   'spec_extension': '',
+      \   'src_extension': '',
+      \   'spec_prefix': '',
+      \   'spec_suffix': 'Spec'
+      \ }
+
+*spec_dir*          The name of the directory where your spec files live.
+
+*src_dir*           The name of the directory where your source files live.
+
+*spec_extension*    The extension of the spec files, useful for frameworks
+                  with plain text spec files without extension.
+
+*src_extension*     The extension of the source files, usually the language
+                  extension.
+
+*spec_prefix*       The spec file name prefix.
+
+*spec_suffix*       The spec file name suffix.
 
 
 ==============================================================================

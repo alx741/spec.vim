@@ -8,6 +8,8 @@ placeholder expansions. It also creates the spec test files following the *src*
 directory structure and it's smart enough to prevent you from accidentally
 creating spec files for the spec files.
 
+For more information `:h spec.vim`
+
 
 ## Currently supported languages
 
@@ -107,7 +109,7 @@ for instance: a Ruby `src/module.rb` source file will have a corresponding
 To change the default settings of a **language**, declare in your *.vimrc*:
 
 ```vim
-let g:spec_global = {
+let g:spec_language = {
     \   'spec_dir': 'test',
     \   'src_dir': 'src',
     \   'spec_extension': '',
