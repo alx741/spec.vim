@@ -20,9 +20,7 @@ function! spec#defaults#load()
             \   'spec_dir': 'test',
             \   'src_dir': 'src',
             \   'prefix': '',
-            \   'suffix': 'Spec',
-            \   'boilerplate':
-            \       "module %specName% where\n"
+            \   'suffix': 'Spec'
             \ }
     endif
 
