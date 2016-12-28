@@ -1,0 +1,91 @@
+*spec.txt*       BDD (Behavior Driven Develpment) helper plugin
+*Spec* *spec*
+==============================================================================
+CONTENTS                                                       *spec-contents*
+
+    1. Intro........................................|spec-intro|
+    2. Supported Languages..........................|spec-langs|
+    3. Usage........................................|spec-usage|
+    4. Default Mappings.............................|spec-mappings|
+    4. Credits......................................|spec-credits|
+
+==============================================================================
+INTRO                                                             *spec-intro*
+
+*spec.vim* provides commands for easy jumping, creating and running BDD spec
+test files for various supported languages.
+
+Created spec files can have per-Language configurable boilerplate with
+placeholder expansions. It also creates the spec test files following the `src`
+directory structure and it's smart enough to prevent you from accidentally
+creating spec files for the spec files.
+
+==============================================================================
+SUPPORTED LANGUAGES                                               *spec-langs*
+
+Any BDD framework can be used by customizing the boilerplate for each language.
+*spec.vim* ships with some defaults for the listed frameworks.
+
+* Haskell (Hspec)(https://hspec.github.io/)
+* PHP (PHPspec)(http://www.phpspec.net/en/stable/)
+* Ruby (Rspec)(http://rspec.info/)
+
+==============================================================================
+USAGE                                                             *spec-usage*
+
+Main Commands
+-------------
+Basic operations commands:
+
+                                              *:SpecO* *:SpecOpen* *ghs*
+  :SpecO[pen]         Toggle between source file and corresponding spec file.
+                      Will fail if a spec file doesn't exist.
+
+                                              *:SpecC* *:SpecCreate* *ghS*
+  :SpecC[reate]       Create a spec file for the current source file. It will
+                      keep the same source directory structure.
+
+
+Splits variations
+-----------------
+These are commands variations for opening and creating spec files in a new
+horizontal or vertical window split:
+
+                                              *:SpecHO* *:SpecHOpen* *ghhs*
+  :SpecHO[pen]        Same as |:SpecOpen|, but open in a new horizontal split.
+
+                                              *:SpecVO* *:SpecVOpen* *ghvs*
+  :SpecVO[pen]        Same as |:SpecOpen|, but open in a new vertical split.
+
+                                              *:SpecHC* *:SpecHCreate* *ghhS*
+  :SpecHC[reate]      Same as |:SpecCreate|, but create in a new horizontal
+                      split.
+
+                                              *:SpecVC* *:SpecVCreate* *ghvS*
+  :SpecVC[reate]      Same as |:SpecCreate|, but create in a new vertical split.
+
+
+==============================================================================
+DEFAULT MAPPINGS                                               *spec-mappings*
+
+`spec.vim` declares some default mappings for the most important commands.
+
+*ghs*       |:SpecOpen|
+*ghS*       |:SpecCreate|
+
+*ghhs*      |:SpecHOpen|
+*ghvs*      |:SpecVOpen|
+*ghhS*      |:SpecHCreate|
+*ghvS*      |:SpecVCreate|
+
+*ghE*       |:SpecBoilerplateEdit|
+
+==============================================================================
+CREDITS                                                         *spec-credits*
+
+Developed by Daniel Campoverde [alx741] <github.com/alx741>.
+
+Git repository:       https://github.com/alx741/spec.vim
+
+==============================================================================
+vim:ft=help:et:ts=2:sw=2:sts=2:norl

@@ -11,7 +11,7 @@ creating spec files for the spec files.
 
 ## Currently supported languages
 
-Any BDD framework can be used by customising the boilerplate for each language.
+Any BDD framework can be used by customizing the boilerplate for each language.
 *spec.vim* ships with some defaults for the listed frameworks.
 
 * Haskell [(Hspec)](https://hspec.github.io/)
