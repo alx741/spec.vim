@@ -42,8 +42,8 @@ extension.
 Placeholders in the boilerplate files are surrounded by `%` and will be expanded
 when spec files are created. Available placeholders are:
 
-**srcName**: The name of the source file (without the extension)
-**specName**: The name of the spec file (without the extension)
+* **srcName**: The name of the source file (without the extension)
+* **specName**: The name of the spec file (without the extension)
 
 
 ## Configuration
@@ -69,12 +69,12 @@ let g:spec_boilerplate_disable = 1
 ### Per-language configuration
 
 You can configure the directories where your spec test files and normal source
-files are kept as well as the prefix and suffix the spec files should have so,
+files are kept as well as the prefix and suffix the spec files should have, so
 for instance: a Ruby `src/module.rb` source file will have a corresponding
 `spec/module_spec.rb` spec file, but a Haskell `src/Module.hs` will have a
 `test/ModuleSpec.hs` spec file.
 
-To change the default settings of a **language** declare in your *.vimrc*:
+To change the default settings of a **language**, declare in your *.vimrc*:
 
 ```vim
 let g:spec_language = {
