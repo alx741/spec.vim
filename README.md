@@ -19,6 +19,7 @@ Any BDD framework can be used by customizing the boilerplate for each language.
 * Haskell [(Hspec)](https://hspec.github.io/)
 * PHP [(PHPspec)](http://www.phpspec.net/en/stable/)
 * Ruby [(Rspec)](http://rspec.info/)
+* VimL [(Vspec)](https://github.com/kana/vim-vspec)
 
 ### Coming soon
 

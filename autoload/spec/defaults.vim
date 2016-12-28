@@ -57,4 +57,19 @@ function! spec#defaults#load()
             \   'spec_suffix': 'Spec'
             \ }
     endif
+
+
+    " =======================
+    "       VimL
+    " =======================
+    if !exists("g:spec_viml")
+        let g:spec_viml = {
+            \   'spec_dir': 't',
+            \   'src_dir': 'autoload',
+            \   'spec_extension': '.vim',
+            \   'src_extension': '.vim',
+            \   'spec_prefix': '',
+            \   'spec_suffix': '-test'
+            \ }
+    endif
 endfunction
