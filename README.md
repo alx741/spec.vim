@@ -72,8 +72,8 @@ extension.
 Placeholders in the boilerplate files are surrounded by `%` and will be expanded
 when spec files are created. Available placeholders are:
 
-* **srcName**: The name of the source file (without the extension)
-* **specName**: The name of the spec file (without the extension)
+* **%srcName%**: The name of the source file (without the extension)
+* **%specName%**: The name of the spec file (without the extension)
 
 
 ## Configuration
