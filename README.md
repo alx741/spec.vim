@@ -42,6 +42,17 @@ Map | Command | Action
 **ghs** | :SpecOpen | Toggle between source file and corresponding spec file
 **ghS** | :SpecCreate | Create a spec file for the current source file
 
+
+There are commands and mappings variations available for opening and creating
+spec files in a new horizontal or vertical window split:
+
+Map | Command | Action
+--- | ------- | ------
+**ghhs** | :SpecHOpen | Open in horizontal split
+**ghvs** | :SpecVOpen | Open in vertical split
+**ghhS** | :SpecHCreate | Create spec file in horizontal split
+**ghvS** | :SpecVCreate | Create spec file in vertical split
+
 ### Boilerplate
 
 When a new spec file is created with `:SpecCreate`, some per-language
