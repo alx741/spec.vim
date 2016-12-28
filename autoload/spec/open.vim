@@ -11,3 +11,13 @@ function! spec#open#SpecFile(specName)
         return ""
     endif
 endfunction
+
+function! spec#open#SpecFileExist()
+    let l:specName = spec#common#SpecName()
+    let l:specFile = spec#open#SpecFile(l:specName)
+    if l:specFile !=? ""
+        return v:true
+    else
+        return v:false
+    endif
+endfunction

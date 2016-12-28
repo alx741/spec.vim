@@ -2,7 +2,7 @@
 function! spec#Open()
     let l:specName = spec#common#SpecName()
     let l:specFile = spec#open#SpecFile(l:specName)
-    if l:specFile !=? ""
+    if spec#open#SpecFileExist()
         exe ":e " . l:specFile
     else
         echom "Spec file \"" . l:specName . "\" does not exist!"
@@ -10,5 +10,9 @@ function! spec#Open()
 endfunction
 
 function! spec#Create()
-    echoerr "undefined"
+    let l:specName = spec#common#SpecName()
+    if spec#open#SpecFileExist()
+        echom "Spec file \"" . l:specName . "\" already exist!"
+        return
+    endif
 endfunction

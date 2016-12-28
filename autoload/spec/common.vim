@@ -21,6 +21,14 @@ function! spec#common#GetConfig()
     return g:spec_global
 endfunction
 
+function! spec#common#SpecDir()
+    let l:config = spec#common#GetConfig()
+    let l:srcFilePath = expand('%:p:h')
+    let l:srcDir = "/" . config['src_dir']
+    let l:specDir = "/" . config['spec_dir']
+    return substitute(l:srcFilePath, l:srcDir, l:specDir, "")
+endfunction
+
 function! spec#common#SpecName()
     let l:config = spec#common#GetConfig()
     return l:config['prefix'] . s:FileName() . l:config['suffix'] . s:Extension()
