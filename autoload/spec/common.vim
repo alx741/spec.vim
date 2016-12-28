@@ -37,13 +37,13 @@ endfunction
 
 function! spec#common#SpecName()
     let l:config = spec#common#GetConfig()
-    return l:config['prefix'] . s:FileName() . l:config['suffix'] . s:Extension()
+    return l:config['prefix'] . FileName() . l:config['suffix'] . Extension()
 endfunction
 
-function! s:FileName()
+function! FileName()
     return expand("%:t:r")
 endfunction
 
-function! s:Extension()
+function! Extension()
     return "." . expand("%:e")
 endfunction

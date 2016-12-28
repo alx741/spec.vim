@@ -30,4 +30,5 @@ function! spec#Create()
 
     let l:specFile = spec#open#SpecFile(l:specName)
     exe ":edit " . l:specFile
+    call spec#boilerplate#Read()
 endfunction
