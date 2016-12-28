@@ -28,6 +28,8 @@ function! spec#Create()
 
     call spec#create#TouchSpec(l:specName)
     exe ":edit " . spec#open#SpecFile(l:specName)
-    call spec#boilerplate#Read()
-    call spec#boilerplate#Placeholders(srcName, specName)
+    if !exists("g:spec_boilerplate_disable") || g:spec_boilerplate_disable == 0
+        call spec#boilerplate#Read()
+        call spec#boilerplate#Placeholders(srcName, fnamemodify(specName, ':r'))
+    endif
 endfunction

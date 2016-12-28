@@ -3,7 +3,7 @@ call spec#defaults#load()
 
 function! spec#common#AlreadySpec()
     let l:config = spec#common#GetConfig()
-    let l:match = matchstr(s:FileName(), '\C' . l:config['suffix'])
+    let l:match = matchstr(FileName(), '\C' . l:config['suffix'])
     return (l:match !=? "")
 endfunction
 

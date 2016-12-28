@@ -9,7 +9,7 @@ function! spec#boilerplate#Read()
 endfunction
 
 function! spec#boilerplate#Placeholders(srcName, specName)
-    exe "%s/\%srcName\%/" . a:srcName
-    exe "%s/\%specName\%/" . a:specName
+    exe "%s/\%srcName\%/" . a:srcName . "/ge"
+    exe "%s/\%specName\%/" . a:specName . "/ge"
     exe "redraw!"
 endfunction
