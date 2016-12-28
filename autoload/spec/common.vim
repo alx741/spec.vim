@@ -18,20 +18,26 @@ function! spec#common#AlreadySpec()
 endfunction
 
 function! spec#common#GetConfig()
-    if &ft ==? "haskell"
+    if &ft ==? 'haskell'
         if exists("g:spec_haskell")
             return g:spec_haskell
         endif
 
-    elseif &ft ==? "ruby"
+    elseif &ft ==? 'ruby'
         if exists("g:spec_ruby")
             return g:spec_ruby
         endif
 
-    elseif &ft ==? "php"
+    elseif &ft ==? 'php'
         if exists("g:spec_php")
             return g:spec_php
         endif
+
+    elseif &ft ==? 'vim'
+        if exists("g:spec_viml")
+            return g:spec_viml
+        endif
+
     endif
 
     return g:spec_global

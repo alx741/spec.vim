@@ -13,12 +13,12 @@ endif
 if exists("g:spec_disable_maps") && g:spec_disable_maps == 0
     augroup spec
         au!
-        au FileType haskell,ruby,php nnoremap ghs :SpecOpen<CR>
-        au FileType haskell,ruby,php nnoremap ghhs :SpecHOpen<CR>
-        au FileType haskell,ruby,php nnoremap ghvs :SpecVOpen<CR>
-        au FileType haskell,ruby,php nnoremap ghS :SpecCreate<CR>
-        au FileType haskell,ruby,php nnoremap ghhS :SpecHCreate<CR>
-        au FileType haskell,ruby,php nnoremap ghvS :SpecVCreate<CR>
-        au FileType haskell,ruby,php nnoremap ghE :SpecEdit<CR>
+        au FileType haskell,ruby,php,vim nnoremap ghs :SpecOpen<CR>
+        au FileType haskell,ruby,php,vim nnoremap ghhs :SpecHOpen<CR>
+        au FileType haskell,ruby,php,vim nnoremap ghvs :SpecVOpen<CR>
+        au FileType haskell,ruby,php,vim nnoremap ghS :SpecCreate<CR>
+        au FileType haskell,ruby,php,vim nnoremap ghhS :SpecHCreate<CR>
+        au FileType haskell,ruby,php,vim nnoremap ghvS :SpecVCreate<CR>
+        au FileType haskell,ruby,php,vim nnoremap ghE :SpecEdit<CR>
     augroup END
 endif
