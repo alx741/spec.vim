@@ -1,1 +1,1 @@
-source %srcDir%/%srcName%%srcExt%
+source %srcDir%%srcFilePath%%srcName%%srcExt%
