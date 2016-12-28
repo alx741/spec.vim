@@ -58,7 +58,7 @@ For fast editing boilerplate files use:
 
 Map | Command | Action
 --- | ------- | ------
-**ghE** | :SpecBoilerplateEdit | Edit the boilerplate file for the current language
+**ghE** | :SpecEdit | Edit the boilerplate file for the current language
 
 ### Boilerplate
 

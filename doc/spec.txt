@@ -65,6 +65,13 @@ horizontal or vertical window split:
   :SpecVC[reate]      Same as |:SpecCreate|, but create in a new vertical split.
 
 
+Misc
+----
+
+                                                  *:SpecE* *:SpecEdit* *ghE*
+  :SpecE[edit]        Same as |:SpecOpen|, but open in a new horizontal split.
+
+
 ==============================================================================
 DEFAULT MAPPINGS                                               *spec-mappings*
 
