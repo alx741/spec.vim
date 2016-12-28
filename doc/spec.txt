@@ -6,8 +6,9 @@ CONTENTS                                                       *spec-contents*
     1. Intro........................................|spec-intro|
     2. Supported Languages..........................|spec-langs|
     3. Usage........................................|spec-usage|
+    3. Boilerplate..................................|spec-boilerplate|
     4. Default Mappings.............................|spec-mappings|
-    4. Credits......................................|spec-credits|
+    5. Credits......................................|spec-credits|
 
 ==============================================================================
 INTRO                                                             *spec-intro*
@@ -65,11 +66,32 @@ horizontal or vertical window split:
   :SpecVC[reate]      Same as |:SpecCreate|, but create in a new vertical split.
 
 
-Misc
-----
-
+Misc.
+-----
                                                   *:SpecE* *:SpecEdit* *ghE*
-  :SpecE[edit]        Same as |:SpecOpen|, but open in a new horizontal split.
+  :SpecE[edit]        Edit the boilerplate file for the current language.
+
+
+==============================================================================
+BOILERPLATE                                                 *spec-boilerplate*
+
+When a new spec file is created with |:SpecCreate|, some per-language
+boilerplate will be added by default, you can customize it by editing the
+language corresponding file in the |g:spec_boilerplate_dir| directory.
+
+Boilerplate files have the name of the target language and the language
+extension.
+
+Placeholders
+------------
+Placeholders in the boilerplate files are surrounded by `%` and will be expanded
+when spec files are created. Available placeholders are:
+
+                                                 *srcName* *%srcName%*
+  *%srcName%*       The name of the source file (without the extension)
+
+                                               *specName* *%specName%*
+  *%specName%*      The name of the spec file (without the extension)
 
 
 ==============================================================================
