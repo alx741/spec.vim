@@ -1,19 +1,28 @@
-" TODO: check if currently in spec file already
 function! spec#Open()
+    if spec#common#AlreadySpec()
+        echom "This is already a spec file"
+        return
+    endif
+
     let l:specName = spec#common#SpecName()
     let l:specFile = spec#open#SpecFile(l:specName)
-    if spec#open#SpecFileExist()
+    if spec#open#SpecFileExists()
         exe ":edit " . l:specFile
     else
-        echom "Spec file \"" . l:specName . "\" does not exist!"
+        echom "Spec file \"" . l:specName . "\" does not exists!"
     endif
 endfunction
 
 function! spec#Create()
+    if spec#common#AlreadySpec()
+        echom "This is already a spec file"
+        return
+    endif
+
     let l:specName = spec#common#SpecName()
 
-    if spec#open#SpecFileExist()
-        echom "Spec file \"" . l:specName . "\" already exist!"
+    if spec#open#SpecFileExists()
+        echom "Spec file \"" . l:specName . "\" already exists!"
         return
     endif
 

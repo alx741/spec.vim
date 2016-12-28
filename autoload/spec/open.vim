@@ -7,12 +7,12 @@ function! spec#open#SpecFile(specName)
         " Find spec file recursively downwards
         return findfile(a:specName, l:dirAbsPath . "/**/")
     else
-        echoerr "Specs directory: \"" . l:config['spec_dir']  . "\" does not exist!"
+        echoerr "Specs directory: \"" . l:config['spec_dir']  . "\" does not exists!"
         return ""
     endif
 endfunction
 
-function! spec#open#SpecFileExist()
+function! spec#open#SpecFileExists()
     let l:specName = spec#common#SpecName()
     let l:specFile = spec#open#SpecFile(l:specName)
     if l:specFile !=? ""

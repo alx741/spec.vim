@@ -1,6 +1,12 @@
 " Load FileType defaults
 call spec#defaults#load()
 
+function! spec#common#AlreadySpec()
+    let l:config = spec#common#GetConfig()
+    let l:match = matchstr(s:FileName(), '\C' . l:config['suffix'])
+    return (l:match !=? "")
+endfunction
+
 function! spec#common#GetConfig()
     if &ft ==? "haskell"
         if exists("g:spec_haskell")
