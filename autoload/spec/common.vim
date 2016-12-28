@@ -1,6 +1,16 @@
 " Load FileType defaults
 call spec#defaults#load()
 
+function! spec#common#Edit(split, file)
+    if a:split ==? 'current'
+        exe ":edit " . a:file
+    elseif a:split ==? 'horizontal'
+        exe ":split " . a:file
+    elseif a:split ==? 'vertical'
+        exe ":vsplit " . a:file
+    endif
+endfunction
+
 function! spec#common#AlreadySpec()
     let l:config = spec#common#GetConfig()
     let l:match = matchstr(FileName(), '\C' . l:config['spec_suffix'])

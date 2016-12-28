@@ -1,4 +1,4 @@
-function! spec#Open()
+function! spec#Open(split)
     if spec#common#AlreadySpec()
         let l:srcName = spec#common#SrcName()
         let l:srcFile = spec#open#SrcFile()
@@ -11,14 +11,14 @@ function! spec#Open()
         let l:specName = spec#common#SpecName()
         let l:specFile = spec#open#SpecFile()
         if spec#open#SpecFileExists()
-            exe ":edit " . l:specFile
+            call spec#common#Edit(a:split, l:specFile)
         else
             echom "Spec file \"" . l:specName . "\" does not exist!"
         endif
     endif
 endfunction
 
-function! spec#Create()
+function! spec#Create(split)
     if spec#common#AlreadySpec()
         echom "This is already a spec file"
         return
@@ -32,7 +32,7 @@ function! spec#Create()
     endif
 
     call spec#create#TouchSpec(l:specName)
-    exe ":edit " . spec#open#SpecFile()
+    call spec#common#Edit(a:split, spec#open#SpecFile())
     if !exists("g:spec_boilerplate_disable") || g:spec_boilerplate_disable == 0
         call spec#boilerplate#Read()
         call spec#boilerplate#Placeholders(srcName, fnamemodify(specName, ':r'))
