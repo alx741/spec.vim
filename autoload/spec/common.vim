@@ -35,6 +35,13 @@ function! spec#common#SpecDir()
     return substitute(l:srcFilePath, l:srcDir, l:specDir, "")
 endfunction
 
+function! spec#common#SrcName()
+    let l:config = spec#common#GetConfig()
+    let l:removePrefix = substitute(FileName(), l:config['prefix'], "", "")
+    let l:removeSuffix = substitute(removePrefix, l:config['suffix'], "", "")
+    return l:removeSuffix . Extension()
+endfunction
+
 function! spec#common#SpecName()
     let l:config = spec#common#GetConfig()
     return l:config['prefix'] . FileName() . l:config['suffix'] . Extension()
