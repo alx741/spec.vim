@@ -25,6 +25,7 @@ function! spec#Create(split)
     endif
 
     let l:srcName = FileName()
+    let l:srcFilePath = fnamemodify(spec#open#SrcFile(), ':h') . '/'
     let l:specName = spec#common#SpecName()
     if spec#open#SpecFileExists()
         echom "Spec file \"" . l:specName . "\" already exists!"
@@ -35,6 +36,6 @@ function! spec#Create(split)
     call spec#common#Edit(a:split, spec#open#SpecFile())
     if !exists("g:spec_boilerplate_disable") || g:spec_boilerplate_disable == 0
         call spec#boilerplate#Read()
-        call spec#boilerplate#Placeholders(srcName, fnamemodify(specName, ':r'))
+        call spec#boilerplate#Placeholders(srcName, fnamemodify(specName, ':r'), srcFilePath)
     endif
 endfunction
