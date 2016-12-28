@@ -53,6 +53,13 @@ Map | Command | Action
 **ghhS** | :SpecHCreate | Create spec file in horizontal split
 **ghvS** | :SpecVCreate | Create spec file in vertical split
 
+
+For fast editing boilerplate files use:
+
+Map | Command | Action
+--- | ------- | ------
+**ghE** | :SpecBoilerplateEdit | Edit the boilerplate file for the current language
+
 ### Boilerplate
 
 When a new spec file is created with `:SpecCreate`, some per-language
