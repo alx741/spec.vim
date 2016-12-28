@@ -11,6 +11,9 @@ creating spec files for the spec files.
 
 ## Currently supported languages
 
+Any BDD framework can be used by customising the boilerplate for each language.
+*spec.vim* ships with some defaults for the listed frameworks.
+
 * Haskell [(Hspec)](https://hspec.github.io/)
 * PHP [(PHPspec)](http://www.phpspec.net/en/stable/)
 * Ruby [(Rspec)](http://rspec.info/)
@@ -77,10 +80,21 @@ for instance: a Ruby `src/module.rb` source file will have a corresponding
 To change the default settings of a **language**, declare in your *.vimrc*:
 
 ```vim
-let g:spec_language = {
+let g:spec_global = {
     \   'spec_dir': 'test',
     \   'src_dir': 'src',
-    \   'prefix': '',
-    \   'suffix': 'Spec'
+    \   'spec_extension': '',
+    \   'src_extension': '',
+    \   'spec_prefix': '',
+    \   'spec_suffix': 'Spec'
     \ }
 ```
+
+* `spec_dir` is the name of the directory where your spec files live
+* `src_dir` is the name of the directory where your source files live
+* `spec_extension` is the extension of the spec files, useful for frameworks
+  with plain text spec files without extension
+* `src_extension` is the extension of the source files, usually the language
+  extension
+* `spec_prefix` is the spec file name prefix
+* `spec_suffix` is the spec file name suffix
