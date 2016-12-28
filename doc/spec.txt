@@ -89,10 +89,28 @@ Placeholders in the boilerplate files are surrounded by `%` and will be expanded
 when spec files are created. Available placeholders are:
 
                                                  *srcName* *%srcName%*
-  *%srcName%*       The name of the source file (without the extension)
+  *%srcName%*       The name of the source file (without the extension).
 
                                                *specName* *%specName%*
-  *%specName%*      The name of the spec file (without the extension)
+  *%specName%*      The name of the spec file (without the extension).
+
+                                               *srcDir* *%srcDir%*
+  *%srcDir%*        The sources directory name.
+
+                                               *specDir* *%specDir%*
+  *%specDir%*       The specs directory name.
+
+                                               *srcExt* *%srcExt%*
+  *%srcExt%*        The source files extension.
+
+                                               *specExt* *%specExt%*
+  *%specExt%*       The spec files extension.
+
+                                         *srcFilePath* *%srcFilePath%*
+  *%srcFilePath%*   The path to the source file without the source directory
+                  itself, nor the source file name.
+                  Useful when importing a source file from a spec file using
+                  the full path to it.
 
 
 ==============================================================================

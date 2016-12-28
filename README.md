@@ -79,6 +79,12 @@ when spec files are created. Available placeholders are:
 
 * **%srcName%**: The name of the source file (without the extension)
 * **%specName%**: The name of the spec file (without the extension)
+* **%srcDir%**: The sources directory name
+* **%specDir%**: The specs directory name
+* **%srcExt%**: The source files extension
+* **%specExt%**: The spec files extension
+* **%srcFilePath%**: The path to the source file (without the source directory
+  name, nor the source file name)
 
 
 ## Configuration
