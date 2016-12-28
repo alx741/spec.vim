@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/alx741/spec.vim.svg?style=shield)](https://circleci.com/gh/alx741/spec.vim)
+
 # spec.vim
 
 BDD (Behavior Driven Development) helper plugin that provides commands for easy
