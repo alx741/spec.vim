@@ -21,7 +21,12 @@ function! spec#boilerplate#Read()
 endfunction
 
 function! spec#boilerplate#Placeholders(srcName, specName)
+    let l:config = spec#common#GetConfig()
     exe "%s/\%srcName\%/" . a:srcName . "/ge"
     exe "%s/\%specName\%/" . a:specName . "/ge"
+    exe "%s/\%specDir\%/" . l:config['spec_dir'] . "/ge"
+    exe "%s/\%srcDir\%/" . l:config['src_dir'] . "/ge"
+    exe "%s/\%specExt\%/" . l:config['spec_extension'] . "/ge"
+    exe "%s/\%srcExt\%/" . l:config['src_extension'] . "/ge"
     exe "norm! gg0"
 endfunction

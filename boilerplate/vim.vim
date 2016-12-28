@@ -1,1 +1,1 @@
-source %srcName%.vim
+source %srcDir%/%srcName%%srcExt%
