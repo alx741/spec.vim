@@ -5,7 +5,7 @@ function! spec#Open()
         if spec#open#SrcFileExists()
             exe ":edit " . l:srcFile
         else
-            echom "Source file \"" . l:srcName . "\" does not exists!"
+            echom "Source file \"" . l:srcName . "\" does not exist!"
         endif
     else
         let l:specName = spec#common#SpecName()
@@ -13,7 +13,7 @@ function! spec#Open()
         if spec#open#SpecFileExists()
             exe ":edit " . l:specFile
         else
-            echom "Spec file \"" . l:specName . "\" does not exists!"
+            echom "Spec file \"" . l:specName . "\" does not exist!"
         endif
     endif
 endfunction

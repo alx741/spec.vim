@@ -8,7 +8,7 @@ function! spec#open#SpecFile()
         " Find spec file recursively downwards
         return findfile(l:specName, l:dirAbsPath . "/**/")
     else
-        echoerr "Specs directory: \"" . l:config['spec_dir']  . "\" does not exists!"
+        echoerr "Specs directory: \"" . l:config['spec_dir']  . "\" does not exist!"
         return ""
     endif
 endfunction
@@ -23,7 +23,7 @@ function! spec#open#SrcFile()
         " Find src file recursively downwards
         return findfile(l:srcName, l:dirAbsPath . "/**/")
     else
-        echoerr "Source directory: \"" . l:config['src_dir']  . "\" does not exists!"
+        echoerr "Source directory: \"" . l:config['src_dir']  . "\" does not exist!"
         return ""
     endif
 endfunction
