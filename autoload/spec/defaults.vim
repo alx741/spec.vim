@@ -6,8 +6,10 @@ function! spec#defaults#load()
         let g:spec_global = {
             \   'spec_dir': 'test',
             \   'src_dir': 'src',
-            \   'prefix': '',
-            \   'suffix': 'Spec'
+            \   'spec_extension': '',
+            \   'src_extension': '',
+            \   'spec_prefix': '',
+            \   'spec_suffix': 'Spec'
             \ }
     endif
 
@@ -19,8 +21,10 @@ function! spec#defaults#load()
         let g:spec_haskell = {
             \   'spec_dir': 'test',
             \   'src_dir': 'src',
-            \   'prefix': '',
-            \   'suffix': 'Spec'
+            \   'spec_extension': '.hs',
+            \   'src_extension': '.hs',
+            \   'spec_prefix': '',
+            \   'spec_suffix': 'Spec'
             \ }
     endif
 
@@ -32,8 +36,10 @@ function! spec#defaults#load()
         let g:spec_ruby = {
             \   'spec_dir': 'spec',
             \   'src_dir': 'src',
-            \   'prefix': '',
-            \   'suffix': '_spec'
+            \   'spec_extension': '.rb',
+            \   'src_extension': '.rb',
+            \   'spec_prefix': '',
+            \   'spec_suffix': '_spec'
             \ }
     endif
 
@@ -45,8 +51,10 @@ function! spec#defaults#load()
         let g:spec_php = {
             \   'spec_dir': 'spec',
             \   'src_dir': 'src',
-            \   'prefix': '',
-            \   'suffix': 'Spec'
+            \   'spec_extension': '.php',
+            \   'src_extension': '.php',
+            \   'spec_prefix': '',
+            \   'spec_suffix': 'Spec'
             \ }
     endif
 endfunction

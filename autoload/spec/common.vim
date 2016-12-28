@@ -3,7 +3,7 @@ call spec#defaults#load()
 
 function! spec#common#AlreadySpec()
     let l:config = spec#common#GetConfig()
-    let l:match = matchstr(FileName(), '\C' . l:config['suffix'])
+    let l:match = matchstr(FileName(), '\C' . l:config['spec_suffix'])
     return (l:match !=? "")
 endfunction
 
@@ -37,14 +37,14 @@ endfunction
 
 function! spec#common#SrcName()
     let l:config = spec#common#GetConfig()
-    let l:removePrefix = substitute(FileName(), l:config['prefix'], "", "")
-    let l:removeSuffix = substitute(removePrefix, l:config['suffix'], "", "")
-    return l:removeSuffix . Extension()
+    let l:removePrefix = substitute(FileName(), l:config['spec_prefix'], "", "")
+    let l:removeSuffix = substitute(removePrefix, l:config['spec_suffix'], "", "")
+    return l:removeSuffix . l:config['src_extension']
 endfunction
 
 function! spec#common#SpecName()
     let l:config = spec#common#GetConfig()
-    return l:config['prefix'] . FileName() . l:config['suffix'] . Extension()
+    return l:config['spec_prefix'] . FileName() . l:config['spec_suffix'] . l:config['spec_extension']
 endfunction
 
 function! FileName()

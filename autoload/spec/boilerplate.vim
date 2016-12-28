@@ -3,7 +3,8 @@ if !exists("g:spec_boilerplate_dir")
 endif
 
 function! spec#boilerplate#Read()
-    let l:boilerplateFile = g:spec_boilerplate_dir . "/" . &ft . Extension()
+    let l:config = spec#common#GetConfig()
+    let l:boilerplateFile = g:spec_boilerplate_dir . "/" . &ft . l:config['src_extension']
     let l:boilerplate = readfile(l:boilerplateFile)
 
     exe "norm! gg"
