@@ -1,5 +1,6 @@
 function! spec#create#TouchSpec(specName)
     let l:specFile = SpecDir() . "/" . a:specName
+    exe "silent! !mkdir -p " . SpecDir()
     exe "silent! !touch " . l:specFile
     exe "redraw!"
 endfunction
