@@ -4,12 +4,13 @@ endif
 
 function! spec#boilerplate#Read()
     exe "read " . g:spec_boilerplate_dir . "/" . &ft . "*"
-    exe "norm ggJ"
+    exe "norm! ggJ"
     exe "redraw!"
 endfunction
 
 function! spec#boilerplate#Placeholders(srcName, specName)
     exe "%s/\%srcName\%/" . a:srcName . "/ge"
     exe "%s/\%specName\%/" . a:specName . "/ge"
+    exe "norm! gg0"
     exe "redraw!"
 endfunction
