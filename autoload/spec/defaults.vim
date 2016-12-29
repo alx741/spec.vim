@@ -9,7 +9,13 @@ function! spec#defaults#load()
             \   'spec_extension': '',
             \   'src_extension': '',
             \   'spec_prefix': '',
-            \   'spec_suffix': 'Spec'
+            \   'spec_suffix': 'Spec',
+            \   'runner': '!',
+            \   'run_individual_cmd': '',
+            \   'run_all_cmd': '',
+            \   'hook_before': '',
+            \   'hook_pass': '',
+            \   'hook_fail': ''
             \ }
     endif
 
@@ -24,7 +30,13 @@ function! spec#defaults#load()
             \   'spec_extension': '.hs',
             \   'src_extension': '.hs',
             \   'spec_prefix': '',
-            \   'spec_suffix': 'Spec'
+            \   'spec_suffix': 'Spec',
+            \   'runner': '!',
+            \   'run_individual_cmd': 'stack runhaskell {spec}',
+            \   'run_all_cmd': 'stack test',
+            \   'hook_before': '',
+            \   'hook_pass': '',
+            \   'hook_fail': ''
             \ }
     endif
 
@@ -39,7 +51,13 @@ function! spec#defaults#load()
             \   'spec_extension': '.rb',
             \   'src_extension': '.rb',
             \   'spec_prefix': '',
-            \   'spec_suffix': '_spec'
+            \   'spec_suffix': '_spec',
+            \   'runner': '!',
+            \   'run_individual_cmd': 'rspec {spec}',
+            \   'run_all_cmd': 'rspec',
+            \   'hook_before': '',
+            \   'hook_pass': '',
+            \   'hook_fail': ''
             \ }
     endif
 
@@ -54,7 +72,13 @@ function! spec#defaults#load()
             \   'spec_extension': '.php',
             \   'src_extension': '.php',
             \   'spec_prefix': '',
-            \   'spec_suffix': 'Spec'
+            \   'spec_suffix': 'Spec',
+            \   'runner': '!',
+            \   'run_individual_cmd': 'bin/phpspec run {spec}',
+            \   'run_all_cmd': 'bin/phpspec run',
+            \   'hook_before': '',
+            \   'hook_pass': '',
+            \   'hook_fail': ''
             \ }
     endif
 
@@ -69,7 +93,13 @@ function! spec#defaults#load()
             \   'spec_extension': '.vim',
             \   'src_extension': '.vim',
             \   'spec_prefix': '',
-            \   'spec_suffix': '-test'
+            \   'spec_suffix': '-test',
+            \   'runner': '!',
+            \   'run_individual_cmd': '',
+            \   'run_all_cmd': 'rake test',
+            \   'hook_before': '',
+            \   'hook_pass': '',
+            \   'hook_fail': ''
             \ }
     endif
 endfunction
