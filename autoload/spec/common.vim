@@ -83,10 +83,16 @@ endfunction
 
 function! FindFile(dir, name)
     " Find dir recursively upwards
-    let l:dirAbsPath = finddir(a:dir, "./;/")
+    let l:dirAbsPath = fnamemodify(finddir(a:dir, "./;/"), ':p')
     if l:dirAbsPath !=? ""
         " Find file recursively downwards
-        return findfile(a:name, l:dirAbsPath . "/**/")
+        let l:file = findfile(a:name, l:dirAbsPath . "/**/")
+        if l:file ==? ""
+            return l:file
+        else
+            return fnamemodify(l:file, ':p')
+        endif
+        " return findfile(a:name, l:dirAbsPath . "/**/")
     else
         throw "Directory: \"" . a:dir  . "\" does not exist!"
     endif
