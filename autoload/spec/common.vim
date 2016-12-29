@@ -63,6 +63,12 @@ function! spec#common#SpecName()
     return l:config['spec_prefix'] . FileName() . l:config['spec_suffix'] . l:config['spec_extension']
 endfunction
 
+function! spec#common#IsSpec(config, name)
+    let l:matchPrefix = matchstr(a:name, '\C' . a:config['spec_prefix'])
+    let l:matchSuffix = matchstr(a:name, '\C' . a:config['spec_suffix'])
+    return (l:matchPrefix !=? '' || l:matchSuffix !=? '')
+endfunction
+
 function! spec#common#SpecNameTOSrcName(config, specName)
     let l:removePrefix = substitute(a:specName, a:config['spec_prefix'], "", "")
     return substitute(l:removePrefix, a:config['spec_suffix'], "", "")

@@ -58,3 +58,30 @@ describe 'specName to srcName'
         Expect spec#common#SpecNameTOSrcName(config, 'TheOtherModuleSpec') ==# 'OtherModule'
     end
 end
+
+
+describe 'IsSpec'
+    it 'returns True if the given name is a specName with suffix only'
+        let config = {'spec_dir': 'test', 'src_dir': 'src', 'spec_extension': '.hs', 'src_extension': '.hs',
+                    \ 'spec_prefix': '', 'spec_suffix': 'Spec', 'runner': '!', 'run_individual_cmd': '',
+                    \ 'run_all_cmd': '', 'hook_before': '', 'hook_pass': '', 'hook_fail': ''}
+
+        Expect spec#common#IsSpec(config, 'ModuleSpec') == 1
+    end
+
+    it 'returns True if the given name is a specName with prefix only'
+        let config = {'spec_dir': 'test', 'src_dir': 'src', 'spec_extension': '.hs', 'src_extension': '.hs',
+                    \ 'spec_prefix': 'The', 'spec_suffix': '', 'runner': '!', 'run_individual_cmd': '',
+                    \ 'run_all_cmd': '', 'hook_before': '', 'hook_pass': '', 'hook_fail': ''}
+
+        Expect spec#common#IsSpec(config, 'TheModule') == 1
+    end
+
+    it 'returns True if the given name is a specName with both prefix and suffix'
+        let config = {'spec_dir': 'test', 'src_dir': 'src', 'spec_extension': '.hs', 'src_extension': '.hs',
+                    \ 'spec_prefix': 'The', 'spec_suffix': 'Spec', 'runner': '!', 'run_individual_cmd': '',
+                    \ 'run_all_cmd': '', 'hook_before': '', 'hook_pass': '', 'hook_fail': ''}
+
+        Expect spec#common#IsSpec(config, 'TheModuleSpec') == 1
+    end
+end
