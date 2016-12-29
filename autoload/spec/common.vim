@@ -64,6 +64,10 @@ function! spec#common#SpecName()
 endfunction
 
 function! spec#common#GetSpecDir(config, srcFile)
+    if spec#common#IsSpec(a:config, spec#common#Name(a:srcFile))
+        throw a:srcFile . ' is a spec file!'
+    endif
+
     let l:srcFilePath = fnamemodify(a:srcFile, ':h')
     if a:config['keep_src_tree']
         return substitute(l:srcFilePath, a:config['src_dir'], a:config['spec_dir'], "")
@@ -73,19 +77,35 @@ function! spec#common#GetSpecDir(config, srcFile)
     endif
 endfunction!
 
+function! spec#common#SpecNameTOSrcName(config, specName)
+    if !spec#common#IsSpec(a:config, a:specName)
+        throw a:specName . ' is not a spec name!'
+    endif
+
+    let l:removePrefix = substitute(a:specName, a:config['spec_prefix'], "", "")
+    return substitute(l:removePrefix, a:config['spec_suffix'], "", "")
+endfunction
+
+function! spec#common#SrcNameTOSpecName(config, srcName)
+    if spec#common#IsSpec(a:config, a:srcName)
+        throw a:srcName . ' is a spec name!'
+    endif
+
+    return a:config['spec_prefix'] . a:srcName . a:config['spec_suffix']
+endfunction
+
 function! spec#common#IsSpec(config, name)
     let l:matchPrefix = matchstr(a:name, '\C' . a:config['spec_prefix'])
     let l:matchSuffix = matchstr(a:name, '\C' . a:config['spec_suffix'])
     return (l:matchPrefix !=? '' || l:matchSuffix !=? '')
 endfunction
 
-function! spec#common#SpecNameTOSrcName(config, specName)
-    let l:removePrefix = substitute(a:specName, a:config['spec_prefix'], "", "")
-    return substitute(l:removePrefix, a:config['spec_suffix'], "", "")
+function! spec#common#File()
+    return expand('%:p')
 endfunction
 
-function! spec#common#SrcNameTOSpecName(config, srcName)
-    return a:config['spec_prefix'] . a:srcName . a:config['spec_suffix']
+function! spec#common#Name(file)
+    return fnamemodify(a:file, ':t:r')
 endfunction
 
 function! FileName()

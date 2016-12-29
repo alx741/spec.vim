@@ -1,4 +1,17 @@
 source autoload/spec/common.vim
+source t/vspec/matchers.vim
+call vspec#matchers#load()
+
+
+describe 'Name'
+    it 'gives the file name (whiout extension) of a given full-path file'
+        Expect spec#common#Name('Module.hs') ==# 'Module'
+        Expect spec#common#Name('/Module.hs') ==# 'Module'
+        Expect spec#common#Name('./Module.hs') ==# 'Module'
+        Expect spec#common#Name('/some/path/src/Module.hs') ==# 'Module'
+    end
+end
+
 
 describe 'srcName to specName'
     it 'should convert a src file name to its spec name'
@@ -26,6 +39,14 @@ describe 'srcName to specName'
 
         Expect spec#common#SrcNameTOSpecName(config, 'Module') ==# 'Module'
         Expect spec#common#SrcNameTOSpecName(config, 'OtherModule') ==# 'OtherModule'
+    end
+
+    it 'Throws an exception if the name is not a src'
+        let config = {'spec_dir': 'test', 'src_dir': 'src', 'spec_extension': '.hs',
+                    \ 'src_extension': '.hs', 'keep_src_tree': 0, 'spec_prefix': '',
+                    \ 'spec_suffix': 'Spec', 'runner': '!', 'run_individual_cmd': '',
+                    \ 'run_all_cmd': '', 'hook_before': '', 'hook_pass': '', 'hook_fail': ''}
+        Expect "spec#common#SrcNameTOSpecName(config, 'ModuleSpec')" to_throw_exception
     end
 end
 
@@ -56,6 +77,16 @@ describe 'specName to srcName'
 
         Expect spec#common#SpecNameTOSrcName(config, 'TheModuleSpec') ==# 'Module'
         Expect spec#common#SpecNameTOSrcName(config, 'TheOtherModuleSpec') ==# 'OtherModule'
+    end
+
+    it 'Throws an exception if the name is not a spec'
+        let config = {'spec_dir': 'test', 'src_dir': 'src', 'spec_extension': '.hs',
+                    \ 'src_extension': '.hs', 'keep_src_tree': 0, 'spec_prefix': '',
+                    \ 'spec_suffix': 'Spec', 'runner': '!', 'run_individual_cmd': '',
+                    \ 'run_all_cmd': '', 'hook_before': '', 'hook_pass': '', 'hook_fail': ''}
+        Expect "spec#common#SpecNameTOSrcName(config, 'Module')" to_throw_exception
+        Expect "spec#common#SpecNameTOSrcName(config, 'SubModule')" to_throw_exception
+        Expect "spec#common#SpecNameTOSrcName(config, 'SubModule-spec')" to_throw_exception
     end
 end
 
@@ -116,5 +147,27 @@ describe 'GetSpecDir'
         let projectDir = '/home/user/project'
 
         Expect spec#common#GetSpecDir(config, projectDir . '/src/sub1/sub2/SubModule.hs') == projectDir . '/test'
+    end
+
+    it 'Throws an exception if the file is actually a spec file'
+        let projectDir = '/home/user/project'
+
+        let config = {'spec_dir': 'test', 'src_dir': 'src', 'spec_extension': '.hs',
+                    \ 'src_extension': '.hs', 'keep_src_tree': 0, 'spec_prefix': '',
+                    \ 'spec_suffix': 'Spec', 'runner': '!', 'run_individual_cmd': '',
+                    \ 'run_all_cmd': '', 'hook_before': '', 'hook_pass': '', 'hook_fail': ''}
+        Expect "spec#common#GetSpecDir(config, projectDir . '/src/sub1/sub2/SubModuleSpec.hs')" to_throw_exception
+
+        let config = {'spec_dir': 'test', 'src_dir': 'src', 'spec_extension': '.hs',
+                    \ 'src_extension': '.hs', 'keep_src_tree': 0, 'spec_prefix': 'The',
+                    \ 'spec_suffix': '', 'runner': '!', 'run_individual_cmd': '',
+                    \ 'run_all_cmd': '', 'hook_before': '', 'hook_pass': '', 'hook_fail': ''}
+        Expect "spec#common#GetSpecDir(config, projectDir . '/src/sub1/sub2/TheSubModule.hs')" to_throw_exception
+
+        let config = {'spec_dir': 'test', 'src_dir': 'src', 'spec_extension': '.hs',
+                    \ 'src_extension': '.hs', 'keep_src_tree': 0, 'spec_prefix': 'The',
+                    \ 'spec_suffix': 'Spec', 'runner': '!', 'run_individual_cmd': '',
+                    \ 'run_all_cmd': '', 'hook_before': '', 'hook_pass': '', 'hook_fail': ''}
+        Expect "spec#common#GetSpecDir(config, projectDir . '/src/sub1/sub2/TheSubModuleSpec.hs')" to_throw_exception
     end
 end
