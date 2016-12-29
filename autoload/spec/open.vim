@@ -1,20 +1,22 @@
-function! spec#open#SrcFileExists()
-    return spec#open#GetSrcFilePath() !=? ''
-endfunction
+function! spec#open#Open(config, split, fileName)
+    " This is a spec file
+    if spec#common#IsSpec(a:config, a:fileName)
+        let l:srcName = spec#common#SpecNameTOSrcName(a:config, a:fileName)
+        let l:srcFile = spec#common#FindSrcFile(a:config, l:srcName)
+        if l:srcFile !=? ''
+            call spec#common#Edit(a:split, l:srcFile)
+        else
+            echom "Source file \"" . l:srcName . "\" does not exist!"
+        endif
 
-function! spec#open#SpecFileExists()
-    return spec#open#GetSpecFilePath() !=? ''
-endfunction
-
-
-function! spec#open#GetSpecFilePath()
-    let l:config = spec#common#GetConfig()
-    let l:specName = spec#common#SrcNameTOSpecName(l:config, FileName())
-    return spec#common#FindSpecFile(l:config, l:specName)
-endfunction
-
-function! spec#open#GetSrcFilePath()
-    let l:config = spec#common#GetConfig()
-    let l:srcName = spec#common#SpecNameTOSrcName(l:config, FileName())
-    return spec#common#FindSrcFile(l:config, l:srcName)
+    " This is a source file
+    else
+        let l:specName = spec#common#SrcNameTOSpecName(a:config, a:fileName)
+        let l:specFile = spec#common#FindSpecFile(a:config, l:specName)
+        if l:specFile !=? ''
+            call spec#common#Edit(a:split, l:specFile)
+        else
+            echom "Spec file \"" . l:specName . "\" does not exist!"
+        endif
+    endif
 endfunction
