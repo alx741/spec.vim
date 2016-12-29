@@ -63,6 +63,35 @@ function! spec#common#SpecName()
     return l:config['spec_prefix'] . FileName() . l:config['spec_suffix'] . l:config['spec_extension']
 endfunction
 
+
+        " NEW
+
+
+function! spec#common#FindSpecFile(config, specName)
+    if !spec#common#IsSpec(a:config, a:specName)
+        throw a:specName . ' is not a spec!'
+    endif
+    return FindFile(a:config['spec_dir'], a:specName . a:config['spec_extension'])
+endfunction
+
+function! spec#common#FindSrcFile(config, srcName)
+    if spec#common#IsSpec(a:config, a:srcName)
+        throw a:srcName . ' is a spec!'
+    endif
+    return FindFile(a:config['src_dir'], a:srcName . a:config['src_extension'])
+endfunction
+
+function! FindFile(dir, name)
+    " Find dir recursively upwards
+    let l:dirAbsPath = finddir(a:dir, "./;/")
+    if l:dirAbsPath !=? ""
+        " Find file recursively downwards
+        return findfile(a:name, l:dirAbsPath . "/**/")
+    else
+        throw "Directory: \"" . a:dir  . "\" does not exist!"
+    endif
+endfunction
+
 function! spec#common#GetSpecDir(config, srcFile)
     if spec#common#IsSpec(a:config, spec#common#Name(a:srcFile))
         throw a:srcFile . ' is a spec file!'
