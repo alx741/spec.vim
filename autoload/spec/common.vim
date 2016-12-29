@@ -63,6 +63,16 @@ function! spec#common#SpecName()
     return l:config['spec_prefix'] . FileName() . l:config['spec_suffix'] . l:config['spec_extension']
 endfunction
 
+function! spec#common#GetSpecDir(config, srcFile)
+    let l:srcFilePath = fnamemodify(a:srcFile, ':h')
+    if a:config['keep_src_tree']
+        return substitute(l:srcFilePath, a:config['src_dir'], a:config['spec_dir'], "")
+    else
+        let l:removeSrc = substitute(l:srcFilePath, 'src.*', '', '')
+        return l:removeSrc . a:config['spec_dir']
+    endif
+endfunction!
+
 function! spec#common#IsSpec(config, name)
     let l:matchPrefix = matchstr(a:name, '\C' . a:config['spec_prefix'])
     let l:matchSuffix = matchstr(a:name, '\C' . a:config['spec_suffix'])

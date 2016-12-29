@@ -85,3 +85,36 @@ describe 'IsSpec'
         Expect spec#common#IsSpec(config, 'TheModuleSpec') == 1
     end
 end
+
+
+describe 'GetSpecDir'
+    it 'returns the spec directory path that corresponds to the given source file'
+        let config = {'spec_dir': 'test', 'src_dir': 'src', 'spec_extension': '.hs',
+                    \ 'src_extension': '.hs', 'keep_src_tree': 1, 'spec_prefix': '',
+                    \ 'spec_suffix': 'Spec', 'runner': '!', 'run_individual_cmd': '',
+                    \ 'run_all_cmd': '', 'hook_before': '', 'hook_pass': '', 'hook_fail': ''}
+        let projectDir = '/home/user/project'
+
+        Expect spec#common#GetSpecDir(config, projectDir . '/src/Module.hs') == projectDir . '/test'
+    end
+
+    it 'returns the spec directory path that corresponds to the given source file, with nested dirs'
+        let config = {'spec_dir': 'test', 'src_dir': 'src', 'spec_extension': '.hs',
+                    \ 'src_extension': '.hs', 'keep_src_tree': 1, 'spec_prefix': '',
+                    \ 'spec_suffix': 'Spec', 'runner': '!', 'run_individual_cmd': '',
+                    \ 'run_all_cmd': '', 'hook_before': '', 'hook_pass': '', 'hook_fail': ''}
+        let projectDir = '/home/user/project'
+
+        Expect spec#common#GetSpecDir(config, projectDir . '/src/sub1/sub2/SubModule.hs') == projectDir . '/test/sub1/sub2'
+    end
+
+    it 'returns the spec directory and avoids keeping the src tree structure if keep_src_tree = 0'
+        let config = {'spec_dir': 'test', 'src_dir': 'src', 'spec_extension': '.hs',
+                    \ 'src_extension': '.hs', 'keep_src_tree': 0, 'spec_prefix': '',
+                    \ 'spec_suffix': 'Spec', 'runner': '!', 'run_individual_cmd': '',
+                    \ 'run_all_cmd': '', 'hook_before': '', 'hook_pass': '', 'hook_fail': ''}
+        let projectDir = '/home/user/project'
+
+        Expect spec#common#GetSpecDir(config, projectDir . '/src/sub1/sub2/SubModule.hs') == projectDir . '/test'
+    end
+end
