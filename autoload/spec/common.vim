@@ -63,6 +63,15 @@ function! spec#common#SpecName()
     return l:config['spec_prefix'] . FileName() . l:config['spec_suffix'] . l:config['spec_extension']
 endfunction
 
+function! spec#common#SpecNameTOSrcName(config, specName)
+    let l:removePrefix = substitute(a:specName, a:config['spec_prefix'], "", "")
+    return substitute(l:removePrefix, a:config['spec_suffix'], "", "")
+endfunction
+
+function! spec#common#SrcNameTOSpecName(config, srcName)
+    return a:config['spec_prefix'] . a:srcName . a:config['spec_suffix']
+endfunction
+
 function! FileName()
     return expand("%:t:r")
 endfunction
