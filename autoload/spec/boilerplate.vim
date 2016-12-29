@@ -8,9 +8,8 @@ function! spec#boilerplate#Edit()
     exe ":split " . l:boilerplateFile
 endfunction
 
-function! spec#boilerplate#Read()
-    let l:config = spec#common#GetConfig()
-    let l:boilerplateFile = g:spec_boilerplate_dir . "/" . &ft . l:config['src_extension']
+function! spec#boilerplate#Read(config)
+    let l:boilerplateFile = g:spec_boilerplate_dir . "/" . &ft . a:config['src_extension']
     let l:boilerplate = readfile(l:boilerplateFile)
 
     exe "norm! gg"
@@ -20,14 +19,14 @@ function! spec#boilerplate#Read()
     exe "norm! ddgg"
 endfunction
 
-function! spec#boilerplate#Placeholders(srcName, specName, srcFilePath)
-    let l:config = spec#common#GetConfig()
+function! spec#boilerplate#Placeholders(config, srcName, specName, srcFile)
     exe "%s#\%srcName\%#" . a:srcName . "#ge"
     exe "%s#\%specName\%#" . a:specName . "#ge"
-    exe "%s#\%specDir\%#" . l:config['spec_dir'] . "#ge"
-    exe "%s#\%srcDir\%#" . l:config['src_dir'] . "#ge"
-    exe "%s#\%specExt\%#" . l:config['spec_extension'] . "#ge"
-    exe "%s#\%srcExt\%#" . l:config['src_extension'] . "#ge"
-    exe "%s#\%srcFilePath\%#" . substitute(a:srcFilePath, l:config['src_dir'], "", "") . "#ge"
+    exe "%s#\%specDir\%#" . a:config['spec_dir'] . "#ge"
+    exe "%s#\%srcDir\%#" . a:config['src_dir'] . "#ge"
+    exe "%s#\%specExt\%#" . a:config['spec_extension'] . "#ge"
+    exe "%s#\%srcExt\%#" . a:config['src_extension'] . "#ge"
+    let l:srcFilePath = fnamemodify(a:srcFile, ':h')
+    exe "%s#\%srcFilePath\%#" . substitute(l:srcFilePath, a:config['src_dir'], "", "") . "#ge"
     exe "norm! gg0"
 endfunction
