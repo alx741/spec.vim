@@ -26,7 +26,7 @@ function! spec#boilerplate#Placeholders(config, srcName, specName, srcFile)
     exe "%s#\%srcDir\%#" . a:config['src_dir'] . "#ge"
     exe "%s#\%specExt\%#" . a:config['spec_extension'] . "#ge"
     exe "%s#\%srcExt\%#" . a:config['src_extension'] . "#ge"
-    let l:srcFilePath = fnamemodify(a:srcFile, ':h')
-    exe "%s#\%srcFilePath\%#" . substitute(l:srcFilePath, a:config['src_dir'], "", "") . "#ge"
+    let l:srcFilePath = substitute(fnamemodify(a:srcFile, ':h'), ".*" . a:config['src_dir'], "", "") . "/"
+    exe "%s#\%srcFilePath\%#" . l:srcFilePath . "#ge"
     exe "norm! gg0"
 endfunction
