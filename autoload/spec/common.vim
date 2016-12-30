@@ -43,6 +43,11 @@ function! spec#common#GetConfig()
             return g:spec_javascript
         endif
 
+    elseif &ft ==? 'java'
+        if exists("g:spec_java")
+            return g:spec_java
+        endif
+
     endif
 
     return g:spec_global

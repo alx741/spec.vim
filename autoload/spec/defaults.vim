@@ -129,4 +129,26 @@ function! spec#defaults#load()
             \   'hook_fail': ''
             \ }
     endif
+
+
+    " =======================
+    "         Java
+    " =======================
+    if !exists("g:spec_java")
+        let g:spec_java= {
+            \   'spec_dir': 'spec',
+            \   'src_dir': 'src',
+            \   'spec_extension': '.java',
+            \   'src_extension': '.java',
+            \   'keep_src_tree': 1,
+            \   'spec_prefix': '',
+            \   'spec_suffix': 'Spec',
+            \   'runner': '!',
+            \   'run_individual_cmd': 'mvn test {spec}',
+            \   'run_all_cmd': 'mvn test',
+            \   'hook_before': '',
+            \   'hook_pass': '',
+            \   'hook_fail': ''
+            \ }
+    endif
 endfunction
