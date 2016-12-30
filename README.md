@@ -135,16 +135,16 @@ To change the default settings of a **language**, declare in your *.vimrc*:
 
 ```vim
 let g:spec_language = {
-    \   'spec_dir': 'test',
+    \   'spec_dir': 'spec',
     \   'src_dir': 'src',
-    \   'spec_extension': '',
-    \   'src_extension': '',
+    \   'spec_extension': '.rb',
+    \   'src_extension': '.rb',
     \   'keep_src_tree': 1,
     \   'spec_prefix': '',
     \   'spec_suffix': 'Spec',
     \   'runner': '!',
-    \   'run_individual_cmd': '',
-    \   'run_all_cmd': '',
+    \   'run_individual_cmd': 'rspec {spec}',
+    \   'run_all_cmd': 'rspec',
     \   'hook_before': '',
     \   'hook_pass': '',
     \   'hook_fail': ''
@@ -157,8 +157,20 @@ let g:spec_language = {
   with plain text spec files without extension
 * `src_extension` is the extension of the source files, usually the language
   extension
+* `keep_src_tree` tells if the source directory structure (tree) should be
+  preserved in the specs directory
 * `spec_prefix` is the spec file name prefix
 * `spec_suffix` is the spec file name suffix
+* `runner` The vim command to use for running the test commands. `!` is
+  blocking, but you can try `Dispatch` (from
+  [vim-dispatch](https://github.com/tpope/vim-dispatch)), `AsyncRun` (from
+  [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim)),
+  `VimuxRunCommand` (from [vimux](https://github.com/benmills/vimux)), etc.
+* `run_individual_cmd` the shell command for running the `{spec}` file
+* `run_all_cmd` the shell command to use for running all the tests
+* `hook_before` the shell command to execute before running the tests
+* `hook_pass` the shell command to execute when tests pass
+* `hook_fail` the shell command to execute when tests fail
 
 
 ## Testing spec.vim
