@@ -136,3 +136,14 @@ let g:spec_language = {
   extension
 * `spec_prefix` is the spec file name prefix
 * `spec_suffix` is the spec file name suffix
+
+
+## Testing spec.vim
+
+*spec.vim* is tested using `vim-vspec` (the same framework it supports by
+default for VimL). In order to run the test you need `ruby`, `rake` and
+`bundler`.
+
+```sh
+make test
+```
