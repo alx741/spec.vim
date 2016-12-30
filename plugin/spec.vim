@@ -5,6 +5,8 @@ command! SpecCreate call spec#Create('current')
 command! SpecHCreate call spec#Create('horizontal')
 command! SpecVCreate call spec#Create('vertical')
 command! SpecEdit call spec#boilerplate#Edit()
+command! SpecRun call spec#RunThis()
+command! SpecRunAll call spec#RunAll()
 
 if !exists("g:spec_disable_maps")
     let g:spec_disable_maps = 0
@@ -20,5 +22,7 @@ if exists("g:spec_disable_maps") && g:spec_disable_maps == 0
         au FileType haskell,ruby,php,vim nnoremap ghhS :SpecHCreate<CR>
         au FileType haskell,ruby,php,vim nnoremap ghvS :SpecVCreate<CR>
         au FileType haskell,ruby,php,vim nnoremap ghE :SpecEdit<CR>
+        au FileType haskell,ruby,php,vim nnoremap ghr :SpecRun<CR>
+        au FileType haskell,ruby,php,vim nnoremap ghR :SpecRunAll<CR>
     augroup END
 endif
