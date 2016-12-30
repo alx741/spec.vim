@@ -27,6 +27,7 @@ README file.
 Any BDD framework can be used by customizing the boilerplate for each language.
 *spec.vim* ships with some defaults for the listed frameworks.
 
+* Go [(GoConvey)](http://goconvey.co/)
 * Haskell [(Hspec)](https://hspec.github.io/)
 * Java [(JDave)](http://jdave.org/)
 * JavaScript [(Jasmine)](https://jasmine.github.io/)
@@ -37,7 +38,6 @@ Any BDD framework can be used by customizing the boilerplate for each language.
 ### Coming soon
 
 * C++ [(Igloo)](http://igloo-testing.org/)
-* Go [(GoConvey)](http://goconvey.co/)
 * Python [(Behave)](http://pythonhosted.org/behave/)
 * Rust [(Rust-Rspec)](https://github.com/mackwic/rspec)
 

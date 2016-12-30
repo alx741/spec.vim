@@ -151,4 +151,26 @@ function! spec#defaults#load()
             \   'hook_fail': ''
             \ }
     endif
+
+
+    " =======================
+    "         Go
+    " =======================
+    if !exists("g:spec_go")
+        let g:spec_go= {
+            \   'spec_dir': 'test',
+            \   'src_dir': 'src',
+            \   'spec_extension': '.go',
+            \   'src_extension': '.go',
+            \   'keep_src_tree': 1,
+            \   'spec_prefix': '',
+            \   'spec_suffix': '_test',
+            \   'runner': '!',
+            \   'run_individual_cmd': 'go test {spec}',
+            \   'run_all_cmd': 'go test',
+            \   'hook_before': '',
+            \   'hook_pass': '',
+            \   'hook_fail': ''
+            \ }
+    endif
 endfunction

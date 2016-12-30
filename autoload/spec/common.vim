@@ -48,6 +48,11 @@ function! spec#common#GetConfig()
             return g:spec_java
         endif
 
+    elseif &ft ==? 'go'
+        if exists("g:spec_go")
+            return g:spec_go
+        endif
+
     endif
 
     return g:spec_global
