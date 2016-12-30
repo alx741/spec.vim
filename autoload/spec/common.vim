@@ -58,6 +58,11 @@ function! spec#common#GetConfig()
             return g:spec_rust
         endif
 
+    elseif &ft ==? 'python'
+        if exists("g:spec_python")
+            return g:spec_python
+        endif
+
     endif
 
     return g:spec_global

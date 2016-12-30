@@ -195,4 +195,26 @@ function! spec#defaults#load()
             \   'hook_fail': ''
             \ }
     endif
+
+
+    " =======================
+    "         Python
+    " =======================
+    if !exists("g:spec_python")
+        let g:spec_python= {
+            \   'spec_dir': 'features',
+            \   'src_dir': 'src',
+            \   'spec_extension': '.feature',
+            \   'src_extension': '.py',
+            \   'keep_src_tree': 1,
+            \   'spec_prefix': '',
+            \   'spec_suffix': '_test',
+            \   'runner': '!',
+            \   'run_individual_cmd': 'behave {spec}',
+            \   'run_all_cmd': 'behave',
+            \   'hook_before': '',
+            \   'hook_pass': '',
+            \   'hook_fail': ''
+            \ }
+    endif
 endfunction
