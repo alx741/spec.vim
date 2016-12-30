@@ -173,4 +173,26 @@ function! spec#defaults#load()
             \   'hook_fail': ''
             \ }
     endif
+
+
+    " =======================
+    "         Rust
+    " =======================
+    if !exists("g:spec_rust")
+        let g:spec_rust= {
+            \   'spec_dir': 'tests',
+            \   'src_dir': 'src',
+            \   'spec_extension': '.rs',
+            \   'src_extension': '.rs',
+            \   'keep_src_tree': 1,
+            \   'spec_prefix': '',
+            \   'spec_suffix': 'Spec',
+            \   'runner': '!',
+            \   'run_individual_cmd': 'cargo test {spec}',
+            \   'run_all_cmd': 'cargo test',
+            \   'hook_before': '',
+            \   'hook_pass': '',
+            \   'hook_fail': ''
+            \ }
+    endif
 endfunction

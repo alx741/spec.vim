@@ -33,13 +33,13 @@ Any BDD framework can be used by customizing the boilerplate for each language.
 * JavaScript [(Jasmine)](https://jasmine.github.io/)
 * PHP [(PHPspec)](http://www.phpspec.net/en/stable/)
 * Ruby [(Rspec)](http://rspec.info/)
+* Rust [(Rust-Rspec)](https://github.com/mackwic/rspec)
 * VimL [(Vspec)](https://github.com/kana/vim-vspec)
 
 ### Coming soon
 
 * C++ [(Igloo)](http://igloo-testing.org/)
 * Python [(Behave)](http://pythonhosted.org/behave/)
-* Rust [(Rust-Rspec)](https://github.com/mackwic/rspec)
 
 
 ## Installation

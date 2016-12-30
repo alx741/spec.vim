@@ -53,6 +53,11 @@ function! spec#common#GetConfig()
             return g:spec_go
         endif
 
+    elseif &ft ==? 'rust'
+        if exists("g:spec_rust")
+            return g:spec_rust
+        endif
+
     endif
 
     return g:spec_global
