@@ -38,6 +38,11 @@ function! spec#common#GetConfig()
             return g:spec_viml
         endif
 
+    elseif &ft ==? 'javascript'
+        if exists("g:spec_javascript")
+            return g:spec_javascript
+        endif
+
     endif
 
     return g:spec_global

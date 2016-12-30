@@ -107,4 +107,26 @@ function! spec#defaults#load()
             \   'hook_fail': ''
             \ }
     endif
+
+
+    " =======================
+    "       JavaScript
+    " =======================
+    if !exists("g:spec_javascript")
+        let g:spec_javascript = {
+            \   'spec_dir': 'spec',
+            \   'src_dir': 'src',
+            \   'spec_extension': '.js',
+            \   'src_extension': '.js',
+            \   'keep_src_tree': 1,
+            \   'spec_prefix': '',
+            \   'spec_suffix': 'Spec',
+            \   'runner': '!',
+            \   'run_individual_cmd': 'jasmine {spec}',
+            \   'run_all_cmd': 'jasmine',
+            \   'hook_before': '',
+            \   'hook_pass': '',
+            \   'hook_fail': ''
+            \ }
+    endif
 endfunction
