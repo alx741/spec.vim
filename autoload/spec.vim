@@ -11,11 +11,12 @@ function! spec#Create(split)
 endfunction
 
 function! spec#RunThis()
-    " if spec#common#AlreadySpec()
-    "     echom spec#open#GetSpecFilePath()
-    "     " call spec#run#RunThis(spec#open#GetSpecFilePath())
-    " else
-    "     echom spec#open#GetSpecFilePath()
-    "     " echom "This is not a spec file!"
-    " endif
+    let l:config = spec#common#GetConfig()
+    let l:thisFileName = FileName()
+    call spec#run#RunThis(l:config, l:thisFileName)
+endfunction
+
+function! spec#RunAll()
+    let l:config = spec#common#GetConfig()
+    call spec#run#RunAll(l:config)
 endfunction

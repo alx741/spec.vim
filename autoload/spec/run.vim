@@ -1,14 +1,20 @@
 function! spec#run#RunThis(config, fileName)
-    " Get the specFile
-    "     if fileName is a srcName
-            " then convert it to the corresponding specName
+    " Get specName
+    if spec#common#IsSpec(a:config, a:fileName)
+        let l:specName = a:fileName
+    else
+        let l:specName = spec#common#SrcNameTOSpecName(a:config, a:fileName)
+    endif
 
-    echom spec#run#ComposeCommand(a:config, 'individual', a:specFile)
+    " Find specFile and Compose
+    let l:specFile = spec#common#FindSpecFile(a:config, l:specName)
+    exe spec#run#ComposeCommand(a:config, 'individual', l:specFile)
+    redraw!
 endfunction
 
-function! spec#run#RunAll()
-    let l:config = spec#common#GetConfig()
-    echom s:Command('all', '')
+function! spec#run#RunAll(config)
+    exe spec#run#ComposeCommand(a:config, 'all', '')
+    redraw!
 endfunction
 
 function! spec#run#ComposeCommand(config, type, specFile)
@@ -31,7 +37,7 @@ function! spec#run#ComposeCommand(config, type, specFile)
         throw "No runner provided, try :h spec-run"
     endif
 
-    " Build command
+    " Compose command
     let l:command = a:config['runner'] . " "
     if a:config['hook_before'] !=? ''
         let l:command .= a:config['hook_before'] . " && "

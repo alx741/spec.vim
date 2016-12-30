@@ -107,7 +107,7 @@ function! spec#common#GetSpecDir(config, srcFile)
     if a:config['keep_src_tree']
         return substitute(l:srcFilePath, a:config['src_dir'], a:config['spec_dir'], "")
     else
-        let l:removeSrc = substitute(l:srcFilePath, 'src.*', '', '')
+        let l:removeSrc = substitute(l:srcFilePath, a:config['src_dir'] . '.*', '', '')
         return l:removeSrc . a:config['spec_dir']
     endif
 endfunction!
