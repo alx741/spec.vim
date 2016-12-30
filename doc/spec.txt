@@ -7,8 +7,12 @@ CONTENTS                                                       *spec-contents*
     2. Supported Languages..........................|spec-langs|
     3. Usage........................................|spec-usage|
     3. Boilerplate..................................|spec-boilerplate|
+      3.1. Placeholders.............................|spec-placeholders|
     4. Default Mappings.............................|spec-mappings|
     5. Configuration................................|spec-config|
+      5.1. Per-language.............................|spec-lang-config|
+        5.1.1. Runners............................. |spec-runners|
+        5.1.2. Hooks................................|spec-hooks|
     6. Credits......................................|spec-credits|
 
 ==============================================================================
@@ -22,15 +26,24 @@ placeholder expansions. It also creates the spec test files following the `src`
 directory structure and it's smart enough to prevent you from accidentally
 creating spec files for the spec files.
 
+Run your tests in any way you prefer: blocking, using a terminal multiplexer or
+taking advantage of Vim 8 and NeoVim's asynchronicity, and use hooks to execute
+commands before, and after running the tests (handy for things like [the TDD
+traffic light](https://github.com/alx741/tdd_traffic-light) or automatic
+deploying when tests pass). When running a spec file in particular, it doesn't
+matter if your currently in the source file or the spec file, |spec.vim| will do
+the right thing.
+
 ==============================================================================
 SUPPORTED LANGUAGES                                               *spec-langs*
 
 Any BDD framework can be used by customizing the boilerplate for each language.
 *spec.vim* ships with some defaults for the listed frameworks.
 
-* Haskell (Hspec)(https://hspec.github.io/)
-* PHP (PHPspec)(http://www.phpspec.net/en/stable/)
-* Ruby (Rspec)(http://rspec.info/)
+* Haskell     (Hspec https://hspec.github.io/)
+* PHP         (PHPspec http://www.phpspec.net/en/stable/)
+* Ruby        (Rspec http://rspec.info/)
+* VimL        (Vspec https://github.com/kana/vim-vspec)
 
 ==============================================================================
 USAGE                                                             *spec-usage*
@@ -39,11 +52,11 @@ Main Commands
 -------------
 Basic operations commands:
 
-                                              *:SpecO* *:SpecOpen* *ghs*
+                                                    *:SpecO* *:SpecOpen* *ghs*
   :SpecO[pen]         Toggle between source file and corresponding spec file.
                       Will fail if a spec file doesn't exist.
 
-                                              *:SpecC* *:SpecCreate* *ghS*
+                                                  *:SpecC* *:SpecCreate* *ghS*
   :SpecC[reate]       Create a spec file for the current source file. It will
                       keep the same source directory structure.
 
@@ -53,23 +66,35 @@ Splits variations
 These are commands variations for opening and creating spec files in a new
 horizontal or vertical window split:
 
-                                              *:SpecHO* *:SpecHOpen* *ghhs*
+                                                 *:SpecHO* *:SpecHOpen* *ghhs*
   :SpecHO[pen]        Same as |:SpecOpen|, but open in a new horizontal split.
 
-                                              *:SpecVO* *:SpecVOpen* *ghvs*
+                                                 *:SpecVO* *:SpecVOpen* *ghvs*
   :SpecVO[pen]        Same as |:SpecOpen|, but open in a new vertical split.
 
-                                              *:SpecHC* *:SpecHCreate* *ghhS*
+                                               *:SpecHC* *:SpecHCreate* *ghhS*
   :SpecHC[reate]      Same as |:SpecCreate|, but create in a new horizontal
                       split.
 
-                                              *:SpecVC* *:SpecVCreate* *ghvS*
+                                               *:SpecVC* *:SpecVCreate* *ghvS*
   :SpecVC[reate]      Same as |:SpecCreate|, but create in a new vertical split.
+
+
+Running tests
+-------------
+
+                                                           *:SpecR* *:SpecRun*
+  :SpecR[un]          Run the spec for the current file. It doesn't matter if
+                      you're currently in the source file or the spec file, it
+                      will do the right thing.
+
+                                                     *:SpecRunA* *:SpecRunAll*
+  :SpecRunA[ll]       Run all the available tests.
 
 
 Misc.
 -----
-                                                  *:SpecE* *:SpecEdit* *ghE*
+                                                    *:SpecE* *:SpecEdit* *ghE*
   :SpecE[edit]        Edit the boilerplate file for the current language.
 
 
@@ -83,30 +108,30 @@ language corresponding file in the |spec_boilerplate_dir| directory.
 Boilerplate files have the name of the target language and the language
 extension.
 
-Placeholders
+Placeholders                                              *spec-placeholders*
 ------------
 Placeholders in the boilerplate files are surrounded by `%` and will be expanded
 when spec files are created. Available placeholders are:
 
-                                                 *srcName* *%srcName%*
+                                                         *srcName* *%srcName%*
   *%srcName%*       The name of the source file (without the extension).
 
-                                               *specName* *%specName%*
+                                                       *specName* *%specName%*
   *%specName%*      The name of the spec file (without the extension).
 
-                                               *srcDir* *%srcDir%*
+                                                           *srcDir* *%srcDir%*
   *%srcDir%*        The sources directory name.
 
-                                               *specDir* *%specDir%*
+                                                         *specDir* *%specDir%*
   *%specDir%*       The specs directory name.
 
-                                               *srcExt* *%srcExt%*
+                                                           *srcExt* *%srcExt%*
   *%srcExt%*        The source files extension.
 
-                                               *specExt* *%specExt%*
+                                                         *specExt* *%specExt%*
   *%specExt%*       The spec files extension.
 
-                                         *srcFilePath* *%srcFilePath%*
+                                                 *srcFilePath* *%srcFilePath%*
   *%srcFilePath%*   The path to the source file without the source directory
                   itself, nor the source file name.
                   Useful when importing a source file from a spec file using
@@ -117,25 +142,26 @@ when spec files are created. Available placeholders are:
 CONFIGURATION                                                    *spec-config*
 
 
-                                                *spec_disable_maps*
+                                                           *spec_disable_maps*
 g:spec_disable_maps
                         Disables the default |spec-mappings|.
                         Defaults to 0.
 
-                                                *spec_boilerplate_dir*
+                                                        *spec_boilerplate_dir*
 g:spec_boilerplate_dir
                         Defines the location of the |spec-boilerplate|
                         directory.
                         Defaults to plugin installation path.
 
-                                                *spec_boilerplate_disable*
+                                                    *spec_boilerplate_disable*
 g:spec_boilerplate_disable
                         Disables the use of |spec-boilerplate| when creating new
                         spec files.
                         Defaults to 0.
 
 
-Per-language configuration
+
+Per-language configuration                                   *spec-lang-config*
 --------------------------
 
 You can configure the directories where your spec test files and normal source
@@ -147,12 +173,19 @@ for instance: a Ruby `src/module.rb` source file will have a corresponding
 To change the default settings of a language use:
 
   let g:spec_language = {
-      \   'spec_dir': 'test',
+      \   'spec_dir': 'spec',
       \   'src_dir': 'src',
-      \   'spec_extension': '',
-      \   'src_extension': '',
+      \   'spec_extension': '.rb',
+      \   'src_extension': '.rb',
+      \   'keep_src_tree': 1,
       \   'spec_prefix': '',
-      \   'spec_suffix': 'Spec'
+      \   'spec_suffix': 'Spec',
+      \   'runner': '!',
+      \   'run_individual_cmd': 'rspec {spec}',
+      \   'run_all_cmd': 'rspec',
+      \   'hook_before': '',
+      \   'hook_pass': '',
+      \   'hook_fail': ''
       \ }
 
 *spec_dir*          The name of the directory where your spec files live.
@@ -165,9 +198,71 @@ To change the default settings of a language use:
 *src_extension*     The extension of the source files, usually the language
                   extension.
 
+*keep_src_tree*     Tells if the source directory structure (tree) should be
+                  preserved in the spec directory. Useful for testing frameworks
+                  that can find spec files recursively.
+
 *spec_prefix*       The spec file name prefix.
 
 *spec_suffix*       The spec file name suffix.
+
+*runner*            The vim command to use for running the test commands.
+
+*run_individual_cmd* The shell command for running the `{spec}` file.
+
+*run_all_cmd*       The shell command to use for running all the tests.
+
+*hook_before*       The shell command to execute before running the tests.
+
+*hook_pass*         The shell command to execute when tests pass.
+
+*hook_fail*         The shell command to execute when tests fail.
+
+
+
+Runners                                                           *spec-runners*
+-------
+
+In order to execute the command that will run the tests from vim, you need a vim
+command capable of running shell commands for the |runner| option. The default
+is the command |!|, it will execute the tests in a blocking way, But you can use
+commands from other plugins that handle that in a more graceful manner,
+depending on what you prefer.
+
+|Dispatch|          From the vim-dispatch plugin:
+                        https://github.com/tpope/vim-dispatch
+                    Runs the tests using the terminal multiplexer and loads the
+                    results in the |quickfix| list.
+
+|AsyncRun|          From the asyncrun.vim plugin:
+                        https://github.com/skywind3000/asyncrun.vim
+                    Runs the test in the background using Vim 8 and NeoVim's
+                    async capabilities and loads the results in the |quickfix|
+                    list.
+
+|VimuxRunCommand|   From the vimux plugin: https://github.com/benmills/vimux
+                    Runs the tests in a new split pane using Tmux, so it's both
+                    visible and asynchronous.
+
+
+
+Hooks
+-----
+                                                                    *spec-hooks*
+
+Is possible to define shell commands to be executed before and after running the
+tests. This is useful for, for instance, to turn on a build light like the TDD
+traffic light:  https://github.com/benmills/vimux, or doing deployment when
+tests pass.
+
+E.g.:  Using TDD traffic light
+
+  ...
+    \   'hook_before': 'tddlight yellow',
+    \   'hook_pass': 'tddlight green',
+    \   'hook_fail': 'tddlight red'
+  ...
+
 
 
 ==============================================================================

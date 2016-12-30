@@ -18,7 +18,8 @@ deploying when tests pass). When running a spec file in particular, it doesn't
 matter if your currently in the source file or the spec file, *spec.vim* will do
 the right thing.
 
-For more information: `:h spec.vim`
+**NOTE**: the doc file `:h spec.vim` holds more detailed information than this
+README file.
 
 
 ## Currently supported languages
@@ -67,13 +68,6 @@ Map | Command | Action
 **ghvS** | :SpecVCreate | Create spec file in vertical split
 
 
-For fast editing boilerplate files use:
-
-Map | Command | Action
---- | ------- | ------
-**ghE** | :SpecEdit | Edit the boilerplate file for the current language
-
-
 Running tests:
 
 Map | Command | Action
@@ -81,11 +75,19 @@ Map | Command | Action
 **ghr** | :SpecRun | Run the spec for the current file
 **ghR** | :SpecRunAll | Run all the tests
 
+
+For fast editing boilerplate files use:
+
+Map | Command | Action
+--- | ------- | ------
+**ghE** | :SpecEdit | Edit the boilerplate file for the current language
+
+
 ### Boilerplate
 
-When a new spec file is created with `:SpecCreate`, some per-language
-boilerplate will be added by default, you can customize it by editing the
-language corresponding file in the `boilerplate` directory.
+When a new spec file is created with `:SpecCreate` or variants, some
+per-language boilerplate will be added by default, you can customize it by
+editing the language corresponding file in the `boilerplate` directory.
 
 Boilerplate files have the name of the target language and the language
 extension.
