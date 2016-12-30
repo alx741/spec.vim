@@ -174,6 +174,8 @@ let g:spec_language = {
 * `hook_pass` the shell command to execute when tests pass
 * `hook_fail` the shell command to execute when tests fail
 
+For more information about runners and hooks see `:h spec.vim`
+
 
 ## Testing spec.vim
 
