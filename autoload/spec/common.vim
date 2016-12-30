@@ -63,6 +63,11 @@ function! spec#common#GetConfig()
             return g:spec_python
         endif
 
+    elseif &ft ==? 'cpp'
+        if exists("g:spec_cpp")
+            return g:spec_cpp
+        endif
+
     endif
 
     return g:spec_global

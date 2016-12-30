@@ -217,4 +217,26 @@ function! spec#defaults#load()
             \   'hook_fail': ''
             \ }
     endif
+
+
+    " =======================
+    "         C++
+    " =======================
+    if !exists("g:spec_cpp")
+        let g:spec_cpp= {
+            \   'spec_dir': 'test',
+            \   'src_dir': 'src',
+            \   'spec_extension': '.cpp',
+            \   'src_extension': '.cpp',
+            \   'keep_src_tree': 1,
+            \   'spec_prefix': '',
+            \   'spec_suffix': 'Spec',
+            \   'runner': '!',
+            \   'run_individual_cmd': 'make test {spec}',
+            \   'run_all_cmd': 'make test',
+            \   'hook_before': '',
+            \   'hook_pass': '',
+            \   'hook_fail': ''
+            \ }
+    endif
 endfunction
