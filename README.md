@@ -10,7 +10,15 @@ placeholder expansions. It also creates the spec test files following the *src*
 directory structure and it's smart enough to prevent you from accidentally
 creating spec files for the spec files.
 
-For more information `:h spec.vim`
+Run your tests in any way you prefer: blocking, using a terminal multiplexer or
+taking advantage of Vim 8 and NeoVim's asynchronicity, and use hooks to execute
+commands before, and after running the tests (handy for things like [the TDD
+traffic light](https://github.com/alx741/tdd_traffic-light) or automatic
+deploying when tests pass). When running a spec file in particular, it doesn't
+matter if your currently in the source file or the spec file, *spec.vim* will do
+the right thing.
+
+For more information: `:h spec.vim`
 
 
 ## Currently supported languages
@@ -64,6 +72,14 @@ For fast editing boilerplate files use:
 Map | Command | Action
 --- | ------- | ------
 **ghE** | :SpecEdit | Edit the boilerplate file for the current language
+
+
+Running tests:
+
+Map | Command | Action
+--- | ------- | ------
+**ghr** | :SpecRun | Run the spec for the current file
+**ghR** | :SpecRunAll | Run all the tests
 
 ### Boilerplate
 
@@ -123,8 +139,15 @@ let g:spec_language = {
     \   'src_dir': 'src',
     \   'spec_extension': '',
     \   'src_extension': '',
+    \   'keep_src_tree': 1,
     \   'spec_prefix': '',
-    \   'spec_suffix': 'Spec'
+    \   'spec_suffix': 'Spec',
+    \   'runner': '!',
+    \   'run_individual_cmd': '',
+    \   'run_all_cmd': '',
+    \   'hook_before': '',
+    \   'hook_pass': '',
+    \   'hook_fail': ''
     \ }
 ```
 
