@@ -15,8 +15,8 @@ taking advantage of Vim 8 and NeoVim's asynchronicity, and use hooks to execute
 commands before, and after running the tests (handy for things like [the TDD
 traffic light](https://github.com/alx741/tdd_traffic-light) or automatic
 deploying when tests pass). When running a spec file in particular, it doesn't
-matter if your currently in the source file or the spec file, *spec.vim* will do
-the right thing.
+matter if you're currently in the source file or the spec file, *spec.vim* will
+do the right thing.
 
 **NOTE**: the doc file `:h spec.vim` holds more detailed information than this
 README file.
